@@ -8,6 +8,6 @@
         Roger_Delon = 4,
         Polystyrene = 5,
         Modular = 6,
-        Other = 7
+        Other = 9,
     }
 }

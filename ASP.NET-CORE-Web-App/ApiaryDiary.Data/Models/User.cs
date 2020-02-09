@@ -1,6 +1,8 @@
 ﻿namespace ApiaryDiary.Data.Models
 {
-    public class User
+    using Microsoft.AspNetCore.Identity;
+
+    public class User : IdentityUser
     {
     }
 }

@@ -19,6 +19,8 @@
 
         public bool IsHungry { get; set; }
 
+        public string Notes { get; set; }
+
         public ICollection<Report> Reports { get; set; }
     }
 }

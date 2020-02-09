@@ -17,7 +17,7 @@
 
         public BeekeepingType BeekeepingType { get; set; }
 
-        //TODO: Add another type: static or portable
+        //TODO: Add another type: static or mobile
 
         public LocationInfo LocationInfo { get; set; }
 

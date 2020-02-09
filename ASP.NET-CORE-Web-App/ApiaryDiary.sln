@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiaryDiary", "ApiaryDiary\ApiaryDiary.csproj", "{689B3071-048A-4CE9-87A8-CE3CD154D55C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiaryDiary", "ApiaryDiary\ApiaryDiary.csproj", "{689B3071-048A-4CE9-87A8-CE3CD154D55C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiaryDiary.Data", "ApiaryDiary.Data\ApiaryDiary.Data.csproj", "{EF85ED59-2E57-4B32-BF4E-B69BE5BEF6BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{689B3071-048A-4CE9-87A8-CE3CD154D55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{689B3071-048A-4CE9-87A8-CE3CD154D55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{689B3071-048A-4CE9-87A8-CE3CD154D55C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF85ED59-2E57-4B32-BF4E-B69BE5BEF6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF85ED59-2E57-4B32-BF4E-B69BE5BEF6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF85ED59-2E57-4B32-BF4E-B69BE5BEF6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF85ED59-2E57-4B32-BF4E-B69BE5BEF6BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

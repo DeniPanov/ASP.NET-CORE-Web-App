@@ -16,6 +16,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiaryDiary.Controllers\ApiaryDiary.Controllers.csproj" />
     <ProjectReference Include="..\ApiaryDiary.Data\ApiaryDiary.Data.csproj" />
   </ItemGroup>
 

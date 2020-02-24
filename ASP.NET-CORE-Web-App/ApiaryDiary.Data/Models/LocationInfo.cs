@@ -8,6 +8,8 @@
 
         public int Altitude { get; set; }
 
+        public bool HasHoneyPlants { get; set; }
+
         //TODO: consider adding outdoorType or something similar
     }
 }

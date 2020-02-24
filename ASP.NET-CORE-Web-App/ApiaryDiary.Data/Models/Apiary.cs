@@ -1,5 +1,6 @@
 ﻿namespace ApiaryDiary.Data.Models
 {
+    using System;
     using System.Collections.Generic;
 
     using ApiaryDiary.Data.Models.Enums;
@@ -22,6 +23,8 @@
         public LocationInfo LocationInfo { get; set; }
 
         public int Capacity { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public ICollection<Beehive> Beehives { get; set; }
     }

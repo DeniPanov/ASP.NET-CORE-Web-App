@@ -8,7 +8,7 @@
     {
         public Beehive()
         {
-            Reports = new HashSet<Report>();
+            Inspections = new HashSet<Inspection>();
         }
 
         public int Id { get; set; }
@@ -21,6 +21,10 @@
 
         public string Notes { get; set; }
 
-        public ICollection<Report> Reports { get; set; }
+        public Apiary Apiary { get; set; }
+
+        public int ApiaryId { get; set; }
+
+        public ICollection<Inspection> Inspections { get; set; }
     }
 }

@@ -24,7 +24,7 @@
 
         public int Capacity { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn => DateTime.UtcNow;
 
         public ICollection<Beehive> Beehives { get; set; }
     }

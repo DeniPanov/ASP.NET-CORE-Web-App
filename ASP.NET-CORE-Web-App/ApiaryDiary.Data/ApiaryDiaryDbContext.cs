@@ -6,7 +6,7 @@
 
     using ApiaryDiary.Data.Models;
 
-    public class ApiaryDiaryDbContext : IdentityDbContext
+    public class ApiaryDiaryDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApiaryDiaryDbContext(DbContextOptions<ApiaryDiaryDbContext> options)
             : base(options)
@@ -20,6 +20,7 @@
         public DbSet<Note> Notes { get; set; }
         public DbSet<QueenBee> QueenBees { get; set; }
         public DbSet<Statistics> Statistics { get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

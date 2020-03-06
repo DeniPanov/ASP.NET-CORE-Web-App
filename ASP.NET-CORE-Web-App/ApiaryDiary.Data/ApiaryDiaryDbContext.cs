@@ -20,7 +20,6 @@
         public DbSet<Note> Notes { get; set; }
         public DbSet<QueenBee> QueenBees { get; set; }
         public DbSet<Statistics> Statistics { get; set; }
-        public DbSet<ApplicationUser> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -67,13 +66,31 @@
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
-            //builder.Entity<IdentityUser>(entity =>
-            //{
-            //    entity.HasMany(a => a.QueenBees)
-            //        .WithOne(b => b.Beehive)
-            //        .HasForeignKey(b => b.BeehiveId)
-            //        .OnDelete(DeleteBehavior.Restrict);
-            //});
+            builder.Entity<ApplicationUser>(entity =>
+            {
+                entity.HasMany(a => a.Apiaries)
+                    .WithOne(b => b.ApplicationUser)
+                    .HasForeignKey(a => a.ApplicationUserId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+
+            //One-to-one relationship between ApplicationUser and Notebook
+            builder.Entity<ApplicationUser>(entity =>
+            {
+                entity.HasOne(n => n.Notebook)
+                    .WithOne(b => b.ApplicationUser)
+                    .HasForeignKey<Notebook>(n => n.ApplicationUserId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<Notebook>(entity =>
+            {
+                entity.HasMany(n => n.Notes)
+                    .WithOne(nb => nb.Notebook)
+                    .HasForeignKey(n => n.NotebookId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
         }
     }
 }

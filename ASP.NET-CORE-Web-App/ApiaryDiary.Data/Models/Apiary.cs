@@ -32,5 +32,9 @@
         public ICollection<Beehive> Beehives { get; set; }
 
         public ICollection<LocationInfo> Locations { get; set; }
+
+        public ApplicationUser ApplicationUser { get; set; }
+
+        public int ApplicationUserId { get; set; }
     }
 }

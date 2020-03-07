@@ -11,10 +11,10 @@
 
         public int Id { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
 
-        public ICollection<Note> Notes { get; set; }
+        public virtual ICollection<Note> Notes { get; set; }
     }
 }

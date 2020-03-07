@@ -10,7 +10,7 @@
 
         public bool HasHoneyPlants { get; set; }
 
-        public Apiary Apiary { get; set; }
+        public virtual Apiary Apiary { get; set; }
 
         public int ApiaryId { get; set; }
 

@@ -25,14 +25,14 @@
 
         public string Notes { get; set; }
 
-        public Apiary Apiary { get; set; }
+        public virtual Apiary Apiary { get; set; }
 
         public int ApiaryId { get; set; }
 
-        public ICollection<Inspection> Inspections { get; set; }
-
-        public ICollection<Statistics> Statistics { get; set; }
-
-        public ICollection<QueenBee> QueenBees { get; set; }
+        public virtual ICollection<Inspection> Inspections { get; set; }
+                
+        public virtual ICollection<Statistics> Statistics { get; set; }
+                
+        public virtual ICollection<QueenBee> QueenBees { get; set; }
     }
 }

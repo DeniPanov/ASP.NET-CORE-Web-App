@@ -6,10 +6,13 @@
 
     using ApiaryDiary.Data.Models.Enums;
 
+    using static Common.DataConstants.Apiary;
+
     public class Apiary
     {
         public Apiary()
         {
+            this.CreatedOn = DateTime.UtcNow;
             this.Beehives = new HashSet<Beehive>();
             this.Locations = new HashSet<LocationInfo>();
         }
@@ -17,7 +20,7 @@
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(30)] //TODO: Use constants.
+        [MaxLength(NameMaxLenght)]
         public string Name { get; set; }
 
         public BeekeepingType BeekeepingType { get; set; }
@@ -27,14 +30,14 @@
         [Required]
         public int Capacity { get; set; }
 
-        public DateTime CreatedOn => DateTime.UtcNow;
+        public DateTime CreatedOn { get; set; }
 
-        public ICollection<Beehive> Beehives { get; set; }
+        public virtual ICollection<Beehive> Beehives { get; set; }
+                
+        public virtual ICollection<LocationInfo> Locations { get; set; }
+                
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
-        public ICollection<LocationInfo> Locations { get; set; }
-
-        public ApplicationUser ApplicationUser { get; set; }
-
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
     }
 }

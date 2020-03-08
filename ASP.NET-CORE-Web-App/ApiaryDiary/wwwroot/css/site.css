@@ -64,6 +64,8 @@ body {
 }
 .footer {
   position: absolute;
+  color: white;
+  background-color: black;
   bottom: 0;
   width: 100%;
   white-space: nowrap;

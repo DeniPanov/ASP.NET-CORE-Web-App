@@ -1,0 +1,17 @@
+﻿body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.customer-login-left {
+    background-image: url(/images/bee-blu-pic.jpg);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-size:100%,100%;
+    padding: 50px 30px;
+    text-align: center;
+    color: #000;
+}
+

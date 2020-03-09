@@ -59,8 +59,11 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url(/images/orange-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .footer {
   position: absolute;

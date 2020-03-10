@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-ApiaryDiary-95B376CA-7240-45E0-B7D6-3D708A90ABFD</UserSecretsId>
+    <StartupObject>ApiaryDiary.Program</StartupObject>
   </PropertyGroup>
 
 
@@ -12,12 +13,18 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\ApiaryDiary.Controllers\ApiaryDiary.Controllers.csproj" />
     <ProjectReference Include="..\ApiaryDiary.Data\ApiaryDiary.Data.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

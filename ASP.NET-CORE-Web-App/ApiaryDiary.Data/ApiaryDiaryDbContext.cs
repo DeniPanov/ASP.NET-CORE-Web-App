@@ -6,7 +6,7 @@
 
     using ApiaryDiary.Data.Models;
 
-    public class ApiaryDiaryDbContext : IdentityDbContext<ApplicationUser>
+    public class ApiaryDiaryDbContext : IdentityDbContext<IdentityUser>
     {
         public ApiaryDiaryDbContext(DbContextOptions<ApiaryDiaryDbContext> options)
             : base(options)

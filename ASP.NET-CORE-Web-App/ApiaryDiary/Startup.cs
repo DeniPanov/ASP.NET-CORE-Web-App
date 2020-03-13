@@ -45,18 +45,6 @@ namespace ApiaryDiary
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            using (var serviceScope = app.ApplicationServices.CreateScope())
-            {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApiaryDiaryDbContext>();
-
-                if (env.IsDevelopment())
-                {
-                    dbContext.Database.Migrate();
-                }
-
-                //new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
-            }
-
             app.UseExceptionHandling(env);
 
             app.UseHttpsRedirection();
@@ -68,6 +56,8 @@ namespace ApiaryDiary
             app.UseAuthorization();
 
             app.UseEndPoints();
+
+            app.SeedData(env);
         }
     }
 }

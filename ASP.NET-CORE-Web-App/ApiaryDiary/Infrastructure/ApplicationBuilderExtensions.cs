@@ -2,7 +2,11 @@
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Hosting;
+
+    using ApiaryDiary.Data;
 
     public static class ApplicationBuilderExtensions
     {
@@ -36,5 +40,23 @@
                      endpoints.MapRazorPages();
                  });
         }
+
+        public static IApplicationBuilder SeedData(this IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApiaryDiaryDbContext>();
+
+                if (env.IsDevelopment())
+                {
+                    dbContext.Database.Migrate();
+                }
+
+                //new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+            }
+
+            return app;
+        }
+
     }
 }

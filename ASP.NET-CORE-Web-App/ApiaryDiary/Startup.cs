@@ -1,15 +1,15 @@
 namespace ApiaryDiary
 {
-    using ApiaryDiary.Data;
-    using Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.Extensions.Hosting;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using ApiaryDiary.Data.Models;
+    using ApiaryDiary.Data;
+    using ApiaryDiary.Services;
+    using ApiaryDiary.Services.Implementations;
+    using Infrastructure;
 
     public class Startup
     {
@@ -41,6 +41,9 @@ namespace ApiaryDiary
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddTransient<IApiaryService, ApiaryService>();
+            services.AddTransient<IBeehiveService, BeehiveService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

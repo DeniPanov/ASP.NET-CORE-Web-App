@@ -1,10 +1,16 @@
 ﻿namespace ApiaryDiary.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using static Common.DataConstants.LocationInfo;
+
     public class LocationInfo
     {
         public int Id { get; set; }
 
-        public string Location { get; set; }
+        [Required]
+        [MaxLength(SettlementMaxLenght)]
+        public string Settlement { get; set; }
 
         public int Altitude { get; set; }
 
@@ -13,7 +19,5 @@
         public virtual Apiary Apiary { get; set; }
 
         public int ApiaryId { get; set; }
-
-        //TODO: consider adding outdoorType or something similar
     }
 }

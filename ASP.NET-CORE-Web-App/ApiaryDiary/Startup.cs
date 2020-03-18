@@ -10,6 +10,7 @@ namespace ApiaryDiary
     using ApiaryDiary.Services;
     using ApiaryDiary.Services.Implementations;
     using Infrastructure;
+    using Microsoft.AspNetCore.Mvc;
 
     public class Startup
     {
@@ -39,7 +40,11 @@ namespace ApiaryDiary
                 options.Password.RequiredUniqueChars = 0;
             });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(options => 
+            {
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            });
+
             services.AddRazorPages();
 
             services.AddTransient<IApiaryService, ApiaryService>();

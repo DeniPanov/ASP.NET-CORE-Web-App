@@ -1,0 +1,20 @@
+﻿@using ApiaryDiary.Controllers.Models.Apiaries
+@model CreateApiaryPostModel
+
+    <form asp-controller="ApiariesController" asp-action="Create" method="post" class="form">
+        <label asp-for="Name">Apiary Name</label>
+        <input asp-for="Name" class="form-control col-md-4" />
+        <span asp-validation-for="Name" class="bg-danger"></span>
+
+        <label asp-for="BeekeepingType">Beekeeping Type</label>
+        <input asp-for="BeekeepingType" class="form-control col-md-4" />
+        <span asp-validation-for="BeekeepingType" class="bg-danger"></span>
+
+        <label asp-for="Capacity">Capacity</label>
+        <input asp-for="Capacity" class="form-control col-md-4"/>
+        <span asp-validation-for="Capacity" class="bg-danger"></span>
+
+        <br />
+
+        <button class="btn btn-primary">Create</button>
+    </form>

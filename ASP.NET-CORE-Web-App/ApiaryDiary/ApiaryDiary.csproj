@@ -25,6 +25,7 @@
 
 
   <ItemGroup>
+    <Folder Include="Views\Beehives\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

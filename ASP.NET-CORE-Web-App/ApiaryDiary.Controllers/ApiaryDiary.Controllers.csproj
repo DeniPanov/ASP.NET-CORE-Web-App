@@ -8,4 +8,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Beehives\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiaryDiary.Services\ApiaryDiary.Services.csproj" />
+  </ItemGroup>
+
 </Project>

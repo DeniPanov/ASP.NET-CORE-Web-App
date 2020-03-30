@@ -4,7 +4,10 @@
     {
         public static class Apiary
         {
-            public const int NameMaxLenght = 30;
+            public const int ApiaryNameMaxLenght = 30;
+            public const int ApiaryNameMinLenght = 3;
+            public const int ApiaryCapacityMinLenght = 1;
+            public const int ApiaryCapacityMaxLenght = 1000;
         }
 
         public static class LocationInfo

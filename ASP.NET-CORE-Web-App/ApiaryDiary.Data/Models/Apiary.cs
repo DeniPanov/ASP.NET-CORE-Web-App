@@ -21,7 +21,7 @@
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(NameMaxLenght)]
+        [MaxLength(ApiaryNameMaxLenght)]
         public string Name { get; set; }
 
         public BeekeepingType BeekeepingType { get; set; }

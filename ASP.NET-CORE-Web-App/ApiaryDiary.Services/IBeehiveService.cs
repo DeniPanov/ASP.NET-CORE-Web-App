@@ -1,6 +1,6 @@
 ﻿namespace ApiaryDiary.Services
 {
-    interface IBeehiveService
+    public interface IBeehiveService
     {
     }
 }

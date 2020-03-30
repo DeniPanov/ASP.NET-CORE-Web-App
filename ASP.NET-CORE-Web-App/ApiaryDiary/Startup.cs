@@ -49,6 +49,7 @@ namespace ApiaryDiary
 
             services.AddTransient<IApiaryService, ApiaryService>();
             services.AddTransient<IBeehiveService, BeehiveService>();
+            services.AddTransient<ILocationInfoService, LocationInfoService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

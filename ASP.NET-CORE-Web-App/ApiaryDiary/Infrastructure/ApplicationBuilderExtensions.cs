@@ -1,12 +1,11 @@
 ﻿namespace ApiaryDiary.Infrastructure
 {
+    using ApiaryDiary.Data;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.DependencyInjection;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-
-    using ApiaryDiary.Data;
 
     public static class ApplicationBuilderExtensions
     {
@@ -19,7 +18,6 @@
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
-
             else
             {
                 app.UseExceptionHandler("/Home/Error");
@@ -52,11 +50,10 @@
                     dbContext.Database.Migrate();
                 }
 
-                //new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                 // new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
 
             return app;
         }
-
     }
 }

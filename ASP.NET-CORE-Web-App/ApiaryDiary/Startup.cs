@@ -1,22 +1,22 @@
 namespace ApiaryDiary
 {
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
     using ApiaryDiary.Data;
     using ApiaryDiary.Services;
     using ApiaryDiary.Services.Implementations;
     using Infrastructure;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
 
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -25,12 +25,12 @@ namespace ApiaryDiary
         {
             services.AddDbContext<ApiaryDiaryDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    this.Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApiaryDiaryDbContext>();
 
-            services.Configure<IdentityOptions>(options => //See if there is a better way to do this.
+            services.Configure<IdentityOptions>(options => // See if there is a better way to do this.
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
@@ -40,7 +40,7 @@ namespace ApiaryDiary
                 options.Password.RequiredUniqueChars = 0;
             });
 
-            services.AddControllersWithViews(options => 
+            services.AddControllersWithViews(options =>
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });

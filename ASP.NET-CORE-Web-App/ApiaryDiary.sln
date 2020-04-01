@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiaryDiary", "ApiaryDiary\ApiaryDiary.csproj", "{689B3071-048A-4CE9-87A8-CE3CD154D55C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiaryDiary.Data", "ApiaryDiary.Data\ApiaryDiary.Data.csproj", "{EF85ED59-2E57-4B32-BF4E-B69BE5BEF6BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiaryDiary.Data", "ApiaryDiary.Data\ApiaryDiary.Data.csproj", "{EF85ED59-2E57-4B32-BF4E-B69BE5BEF6BA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiaryDiary.Controllers", "ApiaryDiary.Controllers\ApiaryDiary.Controllers.csproj", "{04A76986-91C6-44CC-A2E8-F8599D5D471E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiaryDiary.Services", "ApiaryDiary.Services\ApiaryDiary.Services.csproj", "{464D5F6A-E656-41BA-B430-15E1C0C20729}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiaryDiary.Test", "ApiaryDiary.Test\ApiaryDiary.Test.csproj", "{7C096934-1BAD-4809-ABEC-FD32BD2AB8B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{EF85ED59-2E57-4B32-BF4E-B69BE5BEF6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF85ED59-2E57-4B32-BF4E-B69BE5BEF6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF85ED59-2E57-4B32-BF4E-B69BE5BEF6BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04A76986-91C6-44CC-A2E8-F8599D5D471E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A76986-91C6-44CC-A2E8-F8599D5D471E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A76986-91C6-44CC-A2E8-F8599D5D471E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A76986-91C6-44CC-A2E8-F8599D5D471E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{464D5F6A-E656-41BA-B430-15E1C0C20729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{464D5F6A-E656-41BA-B430-15E1C0C20729}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{464D5F6A-E656-41BA-B430-15E1C0C20729}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{464D5F6A-E656-41BA-B430-15E1C0C20729}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C096934-1BAD-4809-ABEC-FD32BD2AB8B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C096934-1BAD-4809-ABEC-FD32BD2AB8B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C096934-1BAD-4809-ABEC-FD32BD2AB8B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C096934-1BAD-4809-ABEC-FD32BD2AB8B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

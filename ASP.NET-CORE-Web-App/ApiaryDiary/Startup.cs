@@ -1,9 +1,9 @@
 namespace ApiaryDiary
 {
     using ApiaryDiary.Data;
+    using ApiaryDiary.Infrastructure;
     using ApiaryDiary.Services;
     using ApiaryDiary.Services.Implementations;
-    using Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -27,18 +27,21 @@ namespace ApiaryDiary
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApiaryDiaryDbContext>();
-
-            services.Configure<IdentityOptions>(options => // See if there is a better way to do this.
+            services.AddDefaultIdentity<IdentityUser>(options =>
             {
+                options.SignIn.RequireConfirmedAccount = true;
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 0;
-            });
+                options.Lockout.MaxFailedAccessAttempts = 6;
+
+                // options.User.RequireUniqueEmail = true;
+            })
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApiaryDiaryDbContext>();
 
             services.AddControllersWithViews(options =>
             {

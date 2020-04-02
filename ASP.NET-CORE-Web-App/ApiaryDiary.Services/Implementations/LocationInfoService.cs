@@ -1,11 +1,10 @@
 ﻿namespace ApiaryDiary.Services.Implementations
 {
-    using System.Threading.Tasks;
-
     using ApiaryDiary.Data;
     using ApiaryDiary.Data.Models;
 
-    using static ApiaryDiary.Data.Common.DataConstants.LocationInfo;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class LocationInfoService : ILocationInfoService
     {
@@ -16,28 +15,25 @@
             this.db = db;
         }
 
-        public async Task<int> CreateAsync(string settlement)
+        public async Task<int> CreateAsync(int apiryId, string settlement)
         {
-            if (string.IsNullOrWhiteSpace(settlement)
-              || settlement.Length > SettlementMaxLenght)
-            {
-                return 0;
-            }
-
             var location = new LocationInfo
             {
-                Settlement = settlement
+                Settlement = settlement,
+                ApiaryId = apiryId
             };
-
-            if (location == null)
-            {
-                return 0;
-            }
 
             db.Locations.Add(location);
             await db.SaveChangesAsync();
 
             return location.Id;
+        }
+
+        public LocationInfo FindById(int locationId)
+        {
+            return db.Locations
+                .Where(l => l.Id == locationId)
+                .FirstOrDefault();
         }
     }
 }

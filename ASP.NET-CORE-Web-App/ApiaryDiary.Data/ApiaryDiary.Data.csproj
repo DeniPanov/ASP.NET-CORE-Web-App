@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200403111825_FixBeekeepingTypeInApiary.cs" />
+    <Compile Remove="Migrations\20200403111825_FixBeekeepingTypeInApiary.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="..\ApiaryDiary\stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 

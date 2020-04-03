@@ -13,7 +13,6 @@
         public Apiary()
         {
             this.CreatedOn = DateTime.UtcNow;
-            this.BeekeepingType = BeekeepingType.Conventional;
             this.Beehives = new HashSet<Beehive>();
             this.Locations = new HashSet<LocationInfo>();
         }

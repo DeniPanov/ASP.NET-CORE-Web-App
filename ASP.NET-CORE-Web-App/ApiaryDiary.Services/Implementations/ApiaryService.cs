@@ -2,6 +2,9 @@
 {
     using ApiaryDiary.Data;
     using ApiaryDiary.Data.Models;
+    using ApiaryDiary.Services.Models;
+
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -36,9 +39,20 @@
             return apiary.Id;
         }
 
-        public async Task ViewAll()
+        public IEnumerable<ApiaryListingServiceModel> ViewAll()
         {
-            await Task.CompletedTask;
+            return db.Apiaries
+                .Select(x => new ApiaryListingServiceModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    TotalBeehives = x.Beehives.Count(),
+                    Address = x.Locations
+                            .Select(l => l.Settlement)
+                            .FirstOrDefault()                    
+                })
+                .OrderBy(x => x.TotalBeehives)
+                .ToList();
         }
 
         public async Task AddNewLocationAsync(int locationId, int apiaryId)
@@ -54,6 +68,11 @@
             return db.Apiaries
                 .Where(a => a.Id == apiaryId)
                 .FirstOrDefault();
+        }
+
+        public int Count()
+        {
+            return this.db.Apiaries.Count();
         }
     }
 }

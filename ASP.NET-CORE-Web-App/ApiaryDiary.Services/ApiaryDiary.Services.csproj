@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ApiaryDiary.Data\ApiaryDiary.Data.csproj" />
   </ItemGroup>
 

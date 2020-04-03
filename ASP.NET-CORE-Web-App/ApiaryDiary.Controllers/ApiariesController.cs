@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class ApiariesController : Controller
@@ -30,8 +30,8 @@
             return this.View();
         }
 
-        [HttpPost]
         [Authorize]
+        [HttpPost]
         public async Task<IActionResult> Create(CreateApiaryPostModel model)
         {
             if (this.ModelState.IsValid == false)
@@ -49,6 +49,16 @@
             await this.apiaryService.AddNewLocationAsync(locationId, apiaryId);
 
             return this.Redirect("/"); //RedirectToAction("ViewAll()")
+        }
+
+        public IActionResult ViewAll()
+        {
+            var viewModel = new ApiaryListingViewModel();
+            var apiaries = apiaryService.ViewAll();
+
+            viewModel.Apiaries = apiaries;
+
+            return this.View(viewModel);
         }
     }
 }

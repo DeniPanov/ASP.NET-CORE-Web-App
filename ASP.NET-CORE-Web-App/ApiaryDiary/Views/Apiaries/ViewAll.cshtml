@@ -1,0 +1,36 @@
+﻿@using ApiaryDiary.Controllers.Models.Apiaries
+@model ApiaryListingViewModel
+
+<div class="container-fluid">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Name</th>
+                <th scope="col" class="text-center">Total Beehives</th>
+                <th scope="col" class="text-center">Address</th>
+                <th scope="col" class="text-center">Options</th>
+            </tr>
+        </thead>
+
+        @foreach (var apiary in Model.Apiaries)
+        {
+            <tbody>
+                <tr>
+                    <th class="text-center" scope="row">@apiary.Id</th>
+                    <td class="text-center">@apiary.Name</td>
+                    <td class="text-center">@apiary.TotalBeehives</td>
+                    <td class="text-center">@apiary.Address</td>
+                    <td class="text-center mx-auto">
+                        <input class="btn btn-sm btn-primary"
+                               type="submit" value="Details" />
+                        <input class="btn btn-sm btn-warning"
+                               type="submit" value="Edit" />
+                        <input class="btn btn-sm btn-danger"
+                               type="submit" value="Delete" />
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>

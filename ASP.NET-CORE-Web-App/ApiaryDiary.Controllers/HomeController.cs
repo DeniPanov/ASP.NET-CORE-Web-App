@@ -1,9 +1,10 @@
 ﻿namespace ApiaryDiary.Controllers
 {
-    using System.Diagnostics;
     using Models;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
+
+    using System.Diagnostics;
 
     public class HomeController : Controller
     {

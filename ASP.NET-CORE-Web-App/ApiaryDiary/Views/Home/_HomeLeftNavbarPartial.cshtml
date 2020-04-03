@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar" class="col-md-3">
+            <div class="sidebar-header">
+                <h3>Apiary Diary</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Dashboard</p>
+                <li class="active">
+                    <a href="#apiarySubmenu" data-toggle="collapse" aria-expanded="true" class="btn btn-secondary dropdown-toggle text-left">Apiaries</a>
+                    <ul class="collapse list-unstyled" id="apiarySubmenu">
+                        <li>
+                            <a asp-controller="Apiaries" asp-action="Create" class="dropdown-item-text">Create new apiary</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Apiaries" asp-action="ViewAll">View all apiaries</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#beehibesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Beehives</a>
+                    <ul class="collapse list-unstyled" id="beehibesSubmenu">
+                        <li>
+                            <a href="#">Add beehive</a>
+                        </li>
+                        <li>
+                            <a href="#">Add multiple beehives</a>
+                        </li>
+                        <li>
+                            <a href="#">View all</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#locationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Locations</a>
+                    <ul class="collapse list-unstyled" id="locationSubmenu">
+                        <li>
+                            <a href="#">Add new location</a>
+                        </li>
+                        <li>
+                            <a href="#">View all</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <partial name="_HomeContentPartial" />
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+}

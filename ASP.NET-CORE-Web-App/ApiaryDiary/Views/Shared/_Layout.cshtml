@@ -49,3 +49,11 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>

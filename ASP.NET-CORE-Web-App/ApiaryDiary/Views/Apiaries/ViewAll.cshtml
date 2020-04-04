@@ -22,12 +22,18 @@
                     <td class="text-center">@apiary.TotalBeehives</td>
                     <td class="text-center">@apiary.Address</td>
                     <td class="text-center mx-auto">
-                        <input class="btn btn-sm btn-primary"
-                               type="submit" value="Details" />
-                        <input class="btn btn-sm btn-warning"
-                               type="submit" value="Edit" />
-                        <input class="btn btn-sm btn-danger"
-                               type="submit" value="Delete" />
+                        <a asp-controller="Apiaries" asp-action="Details">
+                            <input class="btn btn-sm btn-primary m-1"
+                                   type="submit" value="Details" />
+                        </a>
+                        <a asp-controller="Apiaries" asp-action="Edit">
+                            <input class="btn btn-sm btn-warning m-1"
+                                   type="submit" value="Edit" />
+                        </a>
+                        <a asp-controller="Apiaries" asp-action="Delete">
+                            <input class="btn btn-sm btn-danger m-1"
+                                   type="submit" value="Delete" />
+                        </a>
                     </td>
                 </tr>
             </tbody>

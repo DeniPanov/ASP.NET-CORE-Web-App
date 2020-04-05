@@ -4,6 +4,8 @@
     using ApiaryDiary.Data.Models;
     using ApiaryDiary.Services.Models;
 
+    using Microsoft.EntityFrameworkCore;
+
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -39,9 +41,9 @@
             return apiary.Id;
         }
 
-        public IEnumerable<ApiaryListingServiceModel> ViewAll()
+        public async Task<IEnumerable<ApiaryListingServiceModel>> ViewAllAsync()
         {
-            return db.Apiaries
+            return await db.Apiaries
                 .Select(x => new ApiaryListingServiceModel
                 {
                     Id = x.Id,
@@ -52,7 +54,7 @@
                             .FirstOrDefault()                    
                 })
                 .OrderBy(x => x.TotalBeehives)
-                .ToList();
+                .ToListAsync();
         }
 
         public async Task AddNewLocationAsync(int locationId, int apiaryId)
@@ -70,9 +72,27 @@
                 .FirstOrDefault();
         }
 
-        public int Count()
+        public int ApiariesCount()
         {
             return this.db.Apiaries.Count();
+        }
+
+        public async Task<ApiaryDetailsServiceModel> DetailsAsync(string userId)
+        {
+            var result = await this.db
+                .Apiaries
+                .Where(a => a.ApplicationUserId == userId)
+                .Select(a => new ApiaryDetailsServiceModel
+                {
+                    Name = a.Name,
+                    BeekeepingType = a.BeekeepingType.ToString(),
+                    Capacity = a.Capacity,
+                    CreatedOn = a.CreatedOn.ToString("r"),
+                    BeehivesCount = a.Beehives.Count(),
+                })
+                .FirstOrDefaultAsync();
+
+            return result;
         }
     }
 }

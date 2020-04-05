@@ -10,10 +10,14 @@
     {
         Task<int> CreateAsync(string userId, string name, int capacity);
 
-        IEnumerable<ApiaryListingServiceModel> ViewAll();
+        Task<IEnumerable<ApiaryListingServiceModel>> ViewAllAsync();
 
         Apiary FindById(int apiaryId);
 
         Task AddNewLocationAsync(int locationId, int apiaryId);
+
+        int ApiariesCount();
+
+        Task<ApiaryDetailsServiceModel> DetailsAsync(string id);
     }
 }

@@ -1,9 +1,40 @@
-﻿<div class="row">
+﻿@using ApiaryDiary.Services.Models
+@model ApiaryDetailsServiceModel
+
+<div class="row">
     <div class="col-md-3">
         <partial name="_HomeLeftNavbarPartial" />
     </div>
 
     <div class="col-md-9">
-        <h4>Apiary Details</h4>
-    </div>    
+
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a asp-controller="Apiaries" asp-action="ViewAll">Apiaries</a>
+            </li>
+            <li class="breadcrumb-item active">Details</li>
+        </ul>
+
+        <div class="row m-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/images/apiary.jpg" alt="Apiary">
+                <div class="card-body">
+                    <h5 class="card-title">Preview</h5>
+                    <p class="card-text">In this section you can see additional information about your apiry.</p>
+                </div>
+            </div>
+
+            <div class="container-fluid col-md-6 m-3 text-right">
+                <h5 class="card-title">Apiary Details:</h5>
+                <p class="card-text"><strong>Name:</strong> @Model.Name</p>
+                <p class="card-text"><strong>Type:</strong> @Model.BeekeepingType</p>
+                <p class="card-text"><strong>Creation date:</strong> @Model.CreatedOn</p>
+                <p class="card-text"><strong>Total Beehives:</strong> @Model.BeehivesCount</p>
+                <a asp-controller="Apiaries" asp-action="Edit" class="btn btn-warning">Edit</a>
+            </div>
+        </div>
+    </div>
 </div>

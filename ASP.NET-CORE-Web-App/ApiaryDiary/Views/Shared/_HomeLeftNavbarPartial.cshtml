@@ -13,7 +13,8 @@
             <ul class="list-unstyled components">
                 <p>Dashboard</p>
                 <li class="active">
-                    <a href="#apiarySubmenu" data-toggle="collapse" aria-expanded="true" class="btn btn-secondary dropdown-toggle text-left">Apiaries</a>
+                    <a href="#apiarySubmenu" data-toggle="collapse" aria-expanded="false"
+                       class="btn btn-secondary dropdown-toggle text-left">Apiaries</a>
                     <ul class="collapse list-unstyled" id="apiarySubmenu">
                         <li>
                             <a asp-controller="Apiaries" asp-action="Create" class="dropdown-item-text">Create new apiary</a>
@@ -63,7 +64,6 @@
             </ul>
         </nav>
     </div>
-
 
     <script type="text/javascript">
         $(document).ready(function () {

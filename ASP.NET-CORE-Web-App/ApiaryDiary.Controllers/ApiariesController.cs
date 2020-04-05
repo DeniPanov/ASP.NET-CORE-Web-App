@@ -2,13 +2,14 @@
 {
     using ApiaryDiary.Controllers.Models.Apiaries;
     using ApiaryDiary.Services;
-
+    using ApiaryDiary.Services.Models;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    [Authorize]
     public class ApiariesController : Controller
     {
         private readonly IApiaryService apiaryService;
@@ -29,8 +30,7 @@
         {
             return this.View();
         }
-
-        [Authorize]
+        
         [HttpPost]
         public async Task<IActionResult> Create(CreateApiaryPostModel model)
         {
@@ -48,17 +48,41 @@
 
             await this.apiaryService.AddNewLocationAsync(locationId, apiaryId);
 
-            return this.Redirect("/"); //RedirectToAction("ViewAll()")
+            return this.RedirectToAction("ViewAll");
         }
 
-        public IActionResult ViewAll()
+        public async Task<IActionResult> ViewAll()
         {
             var viewModel = new ApiaryListingViewModel();
-            var apiaries = apiaryService.ViewAll();
+            var apiaries = this.apiaryService.ViewAllAsync();
 
-            viewModel.Apiaries = apiaries;
+            viewModel.Apiaries = await apiaries;
 
             return this.View(viewModel);
+        }
+
+        public IActionResult Edit()
+        {
+            return this.View();
+        }
+
+
+        public async Task<IActionResult> Details()
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            var apiary = await this.apiaryService.DetailsAsync(userId);
+
+            if (apiary == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(apiary);
+        }
+
+        public IActionResult Delete()
+        {
+            return this.View();
         }
     }
 }

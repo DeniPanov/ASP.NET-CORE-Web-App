@@ -29,10 +29,11 @@
 
             <div class="container-fluid col-md-6 m-3 text-right">
                 <h5 class="card-title">Apiary Details:</h5>
-                <p class="card-text"><strong>Name:</strong> @Model.Name</p>
-                <p class="card-text"><strong>Type:</strong> @Model.BeekeepingType</p>
-                <p class="card-text"><strong>Creation date:</strong> @Model.CreatedOn</p>
-                <p class="card-text"><strong>Total Beehives:</strong> @Model.BeehivesCount</p>
+                <p class="card-text"><span class="text-dark">Name:</span> @Model.Name</p>
+                <p class="card-text"><span class="text-dark">Type:</span> @Model.BeekeepingType</p>
+                <p class="card-text"><span class="text-dark">Creation date:</span> @Model.CreatedOn</p>
+                <p class="card-text"><span class="text-dark">Capacity:</span> @Model.Capacity</p>
+                <p class="card-text"><span class="text-dark">Total Beehives:</span> @Model.BeehivesCount</p>
                 <a asp-controller="Apiaries" asp-action="Edit" class="btn btn-warning">Edit</a>
             </div>
         </div>

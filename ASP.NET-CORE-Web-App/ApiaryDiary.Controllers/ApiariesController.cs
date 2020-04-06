@@ -49,23 +49,12 @@
             await this.apiaryService.AddNewLocationAsync(locationId, apiaryId);
 
             return this.RedirectToAction("ViewAll");
-        }
+        }               
 
-        public async Task<IActionResult> ViewAll()
-        {
-            var viewModel = new ApiaryListingViewModel();
-            var apiaries = this.apiaryService.ViewAllAsync();
-
-            viewModel.Apiaries = await apiaries;
-
-            return this.View(viewModel);
-        }
-
-        public IActionResult Edit()
+        public IActionResult Delete()
         {
             return this.View();
         }
-
 
         public async Task<IActionResult> Details()
         {
@@ -80,9 +69,58 @@
             return this.View(apiary);
         }
 
-        public IActionResult Delete()
+
+        public async Task<IActionResult> Edit()
         {
-            return this.View();
+            var userId = this.userManager.GetUserId(this.User);
+            var apiary = await this.apiaryService.DetailsAsync(userId);
+
+            if (apiary == null)
+            {
+                return this.NotFound();
+            }
+
+            EditApiaryPostModel editApiry = MapNewEditApiary(apiary);
+
+            return this.View(editApiry);
+        }        
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditApiaryPostModel input)
+        {
+            if (this.ModelState.IsValid == false)
+            {
+                return this.View(input);
+            }
+
+            // Input.id == 0, so it dosn't apply the changes.
+            // So, how to get the Id I realy need?
+            await apiaryService.EditAsync(
+                input.Id, input.Name, input.BeekeepingType, input.Capacity);
+
+
+            return this.RedirectToAction("ViewAll");
+        }
+
+        public async Task<IActionResult> ViewAll()
+        {
+            var viewModel = new ApiaryListingViewModel();
+            var apiaries = this.apiaryService.ViewAllAsync();
+
+            viewModel.Apiaries = await apiaries;
+
+            return this.View(viewModel);
+        }
+
+        private static EditApiaryPostModel MapNewEditApiary(ApiaryDetailsServiceModel apiary)
+        {
+            return new EditApiaryPostModel
+            {
+                Id = apiary.Id,
+                Name = apiary.Name,
+                BeekeepingType = apiary.BeekeepingType,
+                Capacity = apiary.Capacity
+            };
         }
     }
 }

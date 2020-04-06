@@ -2,12 +2,11 @@
 {
     using ApiaryDiary.Data.Models.Enums;
 
-    using static ApiaryDiary.Data.Common.DataConstants.Apiary;
-    using static ApiaryDiary.Data.Common.DataConstants.LocationInfo;
-
     using System.ComponentModel.DataAnnotations;
 
-    public class CreateApiaryPostModel
+    using static ApiaryDiary.Data.Common.DataConstants.Apiary;
+
+    public class EditApiaryPostModel
     {
         public int Id { get; set; }
 
@@ -23,9 +22,5 @@
         [Required]
         [Range(ApiaryCapacityMinLenght, ApiaryCapacityMaxLenght)]
         public int Capacity { get; set; }
-
-        [Required]
-        [MaxLength(SettlementMaxLenght)]
-        public string Settlement { get; set; }
     }
 }

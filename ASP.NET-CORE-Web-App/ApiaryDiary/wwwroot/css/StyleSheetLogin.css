@@ -20,7 +20,7 @@ h1 {
     display: block
 }
 
-.blankBackground{
+.blankBackground {
     background-color: azure;
     background: no-repeat;
     background-size: cover;
@@ -30,4 +30,5 @@ h1 {
     background-image: url(/images/orange-dark.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    background-position: center center;
 }

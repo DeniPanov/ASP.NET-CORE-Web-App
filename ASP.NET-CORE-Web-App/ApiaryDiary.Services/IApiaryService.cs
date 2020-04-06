@@ -1,6 +1,7 @@
 ﻿namespace ApiaryDiary.Services
 {
     using ApiaryDiary.Data.Models;
+    using ApiaryDiary.Data.Models.Enums;
     using ApiaryDiary.Services.Models;
 
     using System.Collections.Generic;
@@ -19,5 +20,7 @@
         int ApiariesCount();
 
         Task<ApiaryDetailsServiceModel> DetailsAsync(string id);
+
+        Task EditAsync(int apiaryId, string name, BeekeepingType BeekeepingType, int capacity);
     }
 }

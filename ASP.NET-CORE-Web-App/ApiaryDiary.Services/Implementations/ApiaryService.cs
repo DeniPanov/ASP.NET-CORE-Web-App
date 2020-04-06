@@ -2,6 +2,7 @@
 {
     using ApiaryDiary.Data;
     using ApiaryDiary.Data.Models;
+    using ApiaryDiary.Data.Models.Enums;
     using ApiaryDiary.Services.Models;
 
     using Microsoft.EntityFrameworkCore;
@@ -85,7 +86,7 @@
                 .Select(a => new ApiaryDetailsServiceModel
                 {
                     Name = a.Name,
-                    BeekeepingType = a.BeekeepingType.ToString(),
+                    BeekeepingType = a.BeekeepingType,
                     Capacity = a.Capacity,
                     CreatedOn = a.CreatedOn.ToString("r"),
                     BeehivesCount = a.Beehives.Count(),
@@ -93,6 +94,26 @@
                 .FirstOrDefaultAsync();
 
             return result;
+        }
+
+        public async Task EditAsync(
+            int apiaryId,
+            string name,
+            BeekeepingType BeekeepingType,
+            int capacity)
+        {
+            var apiary = this.FindById(apiaryId);
+
+            if (apiary == null)
+            {
+                return;
+            }
+
+            apiary.Name = name;
+            apiary.BeekeepingType = BeekeepingType;
+            apiary.Capacity = capacity;
+
+            await this.db.SaveChangesAsync();
         }
     }
 }

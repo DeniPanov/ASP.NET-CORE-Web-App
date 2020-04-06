@@ -85,6 +85,7 @@
                 .Where(a => a.ApplicationUserId == userId)
                 .Select(a => new ApiaryDetailsServiceModel
                 {
+                    Id = a.Id,
                     Name = a.Name,
                     BeekeepingType = a.BeekeepingType,
                     Capacity = a.Capacity,

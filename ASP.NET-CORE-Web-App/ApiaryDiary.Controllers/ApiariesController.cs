@@ -86,20 +86,17 @@
         }        
 
         [HttpPost]
-        public async Task<IActionResult> Edit(EditApiaryPostModel input)
+        public async Task<IActionResult> EditAsync(EditApiaryPostModel input)
         {
             if (this.ModelState.IsValid == false)
             {
                 return this.View(input);
             }
 
-            // Input.id == 0, so it dosn't apply the changes.
-            // So, how to get the Id I realy need?
             await apiaryService.EditAsync(
                 input.Id, input.Name, input.BeekeepingType, input.Capacity);
 
-
-            return this.RedirectToAction("ViewAll");
+            return this.RedirectToAction("Details");
         }
 
         public async Task<IActionResult> ViewAll()

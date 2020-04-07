@@ -1,12 +1,12 @@
 ﻿namespace ApiaryDiary.Data.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
     using ApiaryDiary.Data.Models.Enums;
 
     using static Common.DataConstants.Apiary;
+
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Apiary
     {

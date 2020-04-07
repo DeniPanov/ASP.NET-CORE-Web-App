@@ -1,9 +1,9 @@
 ﻿namespace ApiaryDiary.Data.Models
 {
+    using static Common.DataConstants.Note;
+
     using System;
     using System.ComponentModel.DataAnnotations;
-
-    using static Common.DataConstants.Note;
 
     public class Note
     {

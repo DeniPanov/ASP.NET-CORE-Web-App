@@ -1,10 +1,10 @@
 ﻿namespace ApiaryDiary.Data.Models
 {
-    using System.ComponentModel.DataAnnotations;
-
     using ApiaryDiary.Data.Models.Enums;
 
     using static Common.DataConstants.QueenBee;
+
+    using System.ComponentModel.DataAnnotations;
 
     public class QueenBee
     {

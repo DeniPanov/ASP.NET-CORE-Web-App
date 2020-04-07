@@ -22,5 +22,7 @@
         Task<ApiaryDetailsServiceModel> DetailsAsync(string id);
 
         Task EditAsync(int apiaryId, string name, BeekeepingType BeekeepingType, int capacity);
+
+        Task DeleteAsync(int apiaryId);
     }
 }

@@ -1,10 +1,10 @@
 ﻿namespace ApiaryDiary.Data
 {
+    using ApiaryDiary.Data.Models;
+
     using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
-    using ApiaryDiary.Data.Models;
 
     public class ApiaryDiaryDbContext : IdentityDbContext<IdentityUser>
     {

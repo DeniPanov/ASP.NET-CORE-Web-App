@@ -3,10 +3,11 @@
     using ApiaryDiary.Controllers.Models.Apiaries;
     using ApiaryDiary.Services;
     using ApiaryDiary.Services.Models;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
+
     using System.Threading.Tasks;
 
     [Authorize]
@@ -51,8 +52,11 @@
             return this.RedirectToAction("ViewAll");
         }               
 
-        public IActionResult Delete()
+        [HttpPost]
+        public async Task<IActionResult> DeleteAsync(int apiaryId)
         {
+            await this.apiaryService.DeleteAsync(apiaryId);
+
             return this.View();
         }
 

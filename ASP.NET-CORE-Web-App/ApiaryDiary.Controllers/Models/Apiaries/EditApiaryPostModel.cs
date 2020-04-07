@@ -2,9 +2,9 @@
 {
     using ApiaryDiary.Data.Models.Enums;
 
-    using System.ComponentModel.DataAnnotations;
-
     using static ApiaryDiary.Data.Common.DataConstants.Apiary;
+
+    using System.ComponentModel.DataAnnotations;
 
     public class EditApiaryPostModel
     {

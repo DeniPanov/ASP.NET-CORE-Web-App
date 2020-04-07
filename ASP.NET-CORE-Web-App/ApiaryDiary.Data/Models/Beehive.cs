@@ -1,9 +1,9 @@
 ﻿namespace ApiaryDiary.Data.Models
 {
+    using ApiaryDiary.Data.Models.Enums;
+
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
-    using ApiaryDiary.Data.Models.Enums;
 
     public class Beehive
     {

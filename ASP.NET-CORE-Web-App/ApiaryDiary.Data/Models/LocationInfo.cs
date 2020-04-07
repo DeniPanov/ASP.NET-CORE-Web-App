@@ -1,8 +1,8 @@
 ﻿namespace ApiaryDiary.Data.Models
 {
-    using System.ComponentModel.DataAnnotations;
-
     using static Common.DataConstants.LocationInfo;
+
+    using System.ComponentModel.DataAnnotations;
 
     public class LocationInfo
     {

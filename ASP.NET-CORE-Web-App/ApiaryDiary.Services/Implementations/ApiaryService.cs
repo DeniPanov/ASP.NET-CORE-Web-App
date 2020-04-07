@@ -97,6 +97,19 @@
             return result;
         }
 
+        public async Task DeleteAsync(int apiaryId)
+        {
+            var apiary = this.FindById(apiaryId);
+
+            if (apiary == null)
+            {
+                return;
+            }
+
+            this.db.Apiaries.Remove(apiary);
+            await db.SaveChangesAsync();
+        }
+
         public async Task EditAsync(
             int apiaryId,
             string name,

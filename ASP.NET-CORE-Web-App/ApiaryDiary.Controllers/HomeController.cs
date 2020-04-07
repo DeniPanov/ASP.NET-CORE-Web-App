@@ -1,6 +1,7 @@
 ﻿namespace ApiaryDiary.Controllers
 {
     using Models;
+
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 

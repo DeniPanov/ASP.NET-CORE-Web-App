@@ -4,6 +4,7 @@ namespace ApiaryDiary
     using ApiaryDiary.Infrastructure;
     using ApiaryDiary.Services;
     using ApiaryDiary.Services.Implementations;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;

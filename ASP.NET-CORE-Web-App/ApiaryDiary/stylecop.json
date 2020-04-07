@@ -11,8 +11,10 @@
     "documentationRules": {
       "companyName": "ApiaryDiary",
       "copyrightText": "Copyright (c) {companyName}. All Rights Reserved.",
+      "documentExposedElements": false,
       "documentInterfaces": false,
-      "documentInternalElements": false
+      "documentInternalElements": false,
+      "xmlHeader": false
     },
     "orderingRules": {
       "usingDirectivesPlacement": "insideNamespace",

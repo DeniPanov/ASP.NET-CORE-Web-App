@@ -45,6 +45,7 @@
         public async Task<IEnumerable<ApiaryListingServiceModel>> ViewAllAsync()
         {
             return await db.Apiaries
+                .Where(a => a.IsDeleted == false)
                 .Select(x => new ApiaryListingServiceModel
                 {
                     Id = x.Id,
@@ -106,7 +107,7 @@
                 return;
             }
 
-            this.db.Apiaries.Remove(apiary);
+            apiary.IsDeleted = true;
             await db.SaveChangesAsync();
         }
 

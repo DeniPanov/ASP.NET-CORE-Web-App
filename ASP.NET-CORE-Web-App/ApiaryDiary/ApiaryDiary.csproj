@@ -46,4 +46,11 @@
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Content Update="wwwroot\images\apiary.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

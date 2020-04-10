@@ -47,7 +47,7 @@
                                         <p>Are you sure you want to delete the following apiary: @apiary.Name?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <a asp-controller="Apiaries" asp-action="Delete">
+                                        <a asp-controller="Apiaries" asp-action="Delete" asp-route="@apiary.Id">
                                             <button class="btn btn-danger">Yes</button>
                                         </a>
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>

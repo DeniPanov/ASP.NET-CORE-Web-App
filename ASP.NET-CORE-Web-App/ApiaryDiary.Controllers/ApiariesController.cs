@@ -49,15 +49,14 @@
 
             await this.apiaryService.AddNewLocationAsync(locationId, apiaryId);
 
-            return this.RedirectToAction("ViewAll");
-        }               
-
-        [HttpPost]
-        public async Task<IActionResult> DeleteAsync(int apiaryId)
+            return this.RedirectToAction(nameof(this.ViewAll));
+        }
+        
+        public async Task<IActionResult> Delete(int apiaryId)
         {
             await this.apiaryService.DeleteAsync(apiaryId);
 
-            return this.View();
+            return this.RedirectToAction(nameof(this.ViewAll));
         }
 
         public async Task<IActionResult> Details()
@@ -100,7 +99,7 @@
             await apiaryService.EditAsync(
                 input.Id, input.Name, input.BeekeepingType, input.Capacity);
 
-            return this.RedirectToAction("Details");
+            return this.RedirectToAction(nameof(this.Details));
         }
 
         public async Task<IActionResult> ViewAll()

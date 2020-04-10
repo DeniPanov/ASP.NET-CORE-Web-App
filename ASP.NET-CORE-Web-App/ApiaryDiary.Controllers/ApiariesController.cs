@@ -59,10 +59,9 @@
             return this.RedirectToAction(nameof(this.ViewAll));
         }
 
-        public async Task<IActionResult> Details()
+        public async Task<IActionResult> Details(int id)
         {
-            var userId = this.userManager.GetUserId(this.User);
-            var apiary = await this.apiaryService.DetailsAsync(userId);
+            var apiary = await this.apiaryService.DetailsAsync(id);
 
             if (apiary == null)
             {
@@ -73,17 +72,16 @@
         }
 
 
-        public async Task<IActionResult> Edit()
+        public async Task<IActionResult> Edit(int id)
         {
-            var userId = this.userManager.GetUserId(this.User);
-            var apiary = await this.apiaryService.DetailsAsync(userId);
+            var apiaryDetails = await this.apiaryService.DetailsAsync(id);
 
-            if (apiary == null)
+            if (apiaryDetails == null)
             {
                 return this.NotFound();
             }
 
-            EditApiaryPostModel editApiry = MapNewEditApiary(apiary);
+            EditApiaryPostModel editApiry = MapNewEditApiary(apiaryDetails);
 
             return this.View(editApiry);
         }        
@@ -99,7 +97,7 @@
             await apiaryService.EditAsync(
                 input.Id, input.Name, input.BeekeepingType, input.Capacity);
 
-            return this.RedirectToAction(nameof(this.Details));
+            return RedirectToAction(nameof(ViewAll));
         }
 
         public async Task<IActionResult> ViewAll()

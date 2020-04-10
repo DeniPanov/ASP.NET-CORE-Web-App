@@ -19,7 +19,7 @@
 
         int ApiariesCount();
 
-        Task<ApiaryDetailsServiceModel> DetailsAsync(string id);
+        Task<ApiaryDetailsServiceModel> DetailsAsync(int apiaryId);
 
         Task EditAsync(int apiaryId, string name, BeekeepingType BeekeepingType, int capacity);
 

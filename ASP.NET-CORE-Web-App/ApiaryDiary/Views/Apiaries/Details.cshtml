@@ -34,7 +34,7 @@
                 <p class="card-text"><span class="text-dark">Creation date:</span> @Model.CreatedOn</p>
                 <p class="card-text"><span class="text-dark">Capacity:</span> @Model.Capacity</p>
                 <p class="card-text"><span class="text-dark">Total Beehives:</span> @Model.BeehivesCount</p>
-                <a asp-controller="Apiaries" asp-action="Edit" asp-route="@Model.Id" class="btn btn-warning">Edit</a>
+                <a asp-controller="Apiaries" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
             </div>
         </div>
     </div>

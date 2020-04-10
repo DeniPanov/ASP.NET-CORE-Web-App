@@ -22,11 +22,11 @@
                     <td class="text-center">@apiary.TotalBeehives</td>
                     <td class="text-center">@apiary.Address</td>
                     <td class="text-center mx-auto">
-                        <a asp-controller="Apiaries" asp-action="Details">
+                        <a asp-controller="Apiaries" asp-action="Details" asp-route-id="@apiary.Id">
                             <input class="btn btn-sm btn-primary m-1"
                                    type="submit" value="Details" />
                         </a>
-                        <a asp-controller="Apiaries" asp-action="Edit">
+                        <a asp-controller="Apiaries" asp-action="Edit" asp-route-id="@apiary.Id">
                             <input class="btn btn-sm btn-warning m-1"
                                    type="submit" value="Edit" />
                         </a>
@@ -47,7 +47,7 @@
                                         <p>Are you sure you want to delete the following apiary: @apiary.Name?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <a asp-controller="Apiaries" asp-action="Delete" asp-route="@apiary.Id">
+                                        <a asp-controller="Apiaries" asp-action="Delete" asp-route-id="@apiary.Id">
                                             <button class="btn btn-danger">Yes</button>
                                         </a>
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>

@@ -6,7 +6,7 @@
     using ApiaryDiary.Services.Models;
 
     using Microsoft.EntityFrameworkCore;
-
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -79,11 +79,11 @@
             return this.db.Apiaries.Count();
         }
 
-        public async Task<ApiaryDetailsServiceModel> DetailsAsync(string userId)
+        public async Task<ApiaryDetailsServiceModel> DetailsAsync(int apiaryId)
         {
             var result = await this.db
                 .Apiaries
-                .Where(a => a.ApplicationUserId == userId)
+                .Where(a => a.Id == apiaryId)
                 .Select(a => new ApiaryDetailsServiceModel
                 {
                     Id = a.Id,
@@ -108,6 +108,8 @@
             }
 
             apiary.IsDeleted = true;
+            apiary.DeletedOn = DateTime.UtcNow;
+
             await db.SaveChangesAsync();
         }
 
@@ -127,6 +129,7 @@
             apiary.Name = name;
             apiary.BeekeepingType = BeekeepingType;
             apiary.Capacity = capacity;
+            apiary.ModifiedOn = DateTime.UtcNow;
 
             await this.db.SaveChangesAsync();
         }

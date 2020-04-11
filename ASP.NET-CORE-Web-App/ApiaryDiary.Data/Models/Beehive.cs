@@ -30,6 +30,9 @@
         [Required]
         public SystemType SystemType { get; set; }
 
+        [Required]
+        public BeehiveType BeehiveType { get; set; }
+
         public bool IsHungry { get; set; }
 
         public bool IsAlive { get; set; }

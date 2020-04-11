@@ -26,6 +26,9 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+        
+        [Required]
+        public int Number { get; set; }
 
         [Required]
         public SystemType SystemType { get; set; }

@@ -4,6 +4,8 @@
     using ApiaryDiary.Data.Models.Enums;
     using ApiaryDiary.Services.Models;
 
+    using Microsoft.AspNetCore.Mvc.Rendering;
+
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -24,5 +26,7 @@
         Task EditAsync(int apiaryId, string name, BeekeepingType BeekeepingType, int capacity);
 
         Task DeleteAsync(int apiaryId);
+
+        IEnumerable<SelectListItem> GetAll(string userId);
     }
 }

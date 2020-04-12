@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Beehives\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ApiaryDiary.Services\ApiaryDiary.Services.csproj" />
   </ItemGroup>
 

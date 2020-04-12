@@ -6,10 +6,13 @@
     using ApiaryDiary.Services.Models;
 
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.AspNetCore;
+
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class ApiaryService : IApiaryService
     {
@@ -53,7 +56,7 @@
                     TotalBeehives = x.Beehives.Count(),
                     Address = x.Locations
                             .Select(l => l.Settlement)
-                            .FirstOrDefault()                    
+                            .FirstOrDefault()
                 })
                 .OrderBy(x => x.TotalBeehives)
                 .ToListAsync();
@@ -132,6 +135,27 @@
             apiary.ModifiedOn = DateTime.UtcNow;
 
             await this.db.SaveChangesAsync();
+        }
+
+        public IEnumerable<SelectListItem> GetAll(string userId)
+        {
+            var apiaries = this.db
+                .Apiaries
+                .Where(a => a.ApplicationUserId == userId && a.IsDeleted == false)
+                .ToList();
+
+            var listItems = new List<SelectListItem>();
+
+            foreach (var apiary in apiaries)
+            {
+                listItems.Add(new SelectListItem
+                {
+                    Value = apiary.Id.ToString(),
+                    Text = apiary.Name
+                });
+            }
+
+            return listItems;
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿@using ApiaryDiary.Controllers.Models.Beehives
+@model AddBeehivePostModel
+
+<form asp-action="Create" method="post" class="form">
+    <div class="form-group">
+        <label asp-for="Number"></label>
+        <input asp-for="Number" class="form-control col-md-4" />
+        <span asp-validation-for="Number" class="text-danger"></span>
+    </div>
+
+    @*Dropdown from db*@
+    <div class="form-group">
+        <label asp-for="SelectedApiary"></label>
+        <select asp-for="SelectedApiary" class="form-control col-md-4"
+                asp-items="Model.AllApairies"></select>
+        <span asp-validation-for="SelectedApiary" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SystemType"></label>
+        <select asp-for="SystemType" class="form-control col-md-4"
+                asp-items="@Html.GetEnumSelectList<SystemType>()"></select>
+        <span asp-validation-for="SystemType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BeehiveType"></label>
+        <select asp-for="BeehiveType" class="form-control col-md-4"
+                asp-items="@Html.GetEnumSelectList<BeehiveType>()"></select>
+        <span asp-validation-for="BeehiveType" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <input asp-route-Id="@Model.SelectedApiary" type="submit" value="Create" class="btn btn-primary" />
+</form>

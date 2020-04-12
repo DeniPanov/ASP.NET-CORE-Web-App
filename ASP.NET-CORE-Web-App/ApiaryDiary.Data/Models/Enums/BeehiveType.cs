@@ -1,10 +1,13 @@
 ﻿namespace ApiaryDiary.Data.Models.Enums
 {
+    using System.ComponentModel.DataAnnotations;
+
     public enum BeehiveType
     {
-        beehive = 1,
-        royalFamily = 2,
-        swarm = 3,
-        offspring = 4,
+        Beehive = 1,
+        [Display(Name ="Royal Family")]
+        RoyalFamily = 2,
+        Swarm = 3,
+        Offspring = 4,
     }
 }

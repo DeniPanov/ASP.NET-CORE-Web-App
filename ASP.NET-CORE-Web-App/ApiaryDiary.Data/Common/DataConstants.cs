@@ -10,6 +10,12 @@
             public const int ApiaryCapacityMaxLenght = 1000;
         }
 
+        public static class Beehive
+        {
+            public const int BeehiveNumberMinLenght = 1;
+            public const int BeehiveNumberMaxLenght = 1000;
+        }
+
         public static class LocationInfo
         {
             public const int SettlementMaxLenght = 30;

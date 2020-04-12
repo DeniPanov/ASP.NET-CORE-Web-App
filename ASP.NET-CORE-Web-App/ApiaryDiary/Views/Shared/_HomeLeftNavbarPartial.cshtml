@@ -17,7 +17,8 @@
                        class="btn btn-secondary dropdown-toggle text-left">Apiaries</a>
                     <ul class="collapse list-unstyled" id="apiarySubmenu">
                         <li>
-                            <a asp-controller="Apiaries" asp-action="Create" class="dropdown-item-text">Create new apiary</a>
+                            <a asp-controller="Apiaries" asp-action="Create"
+                               class="dropdown-item-text">Create new apiary</a>
                         </li>
                         <li>
                             <a asp-controller="Apiaries" asp-action="ViewAll">View all apiaries</a>
@@ -28,13 +29,14 @@
                     <a href="#beehibesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Beehives</a>
                     <ul class="collapse list-unstyled" id="beehibesSubmenu">
                         <li>
-                            <a href="#">Add beehive</a>
+                            <a asp-controller="Beehives" asp-action="Create">Add beehive</a>
                         </li>
                         <li>
-                            <a href="#">Add multiple beehives</a>
+                            <a asp-controller="Beehives" 
+                               asp-action="CreateMultiple">Add multiple beehives</a>
                         </li>
                         <li>
-                            <a href="#">View all</a>
+                            <a asp-controller="Beehives" asp-action="ViewAll">View all</a>
                         </li>
                     </ul>
                 </li>

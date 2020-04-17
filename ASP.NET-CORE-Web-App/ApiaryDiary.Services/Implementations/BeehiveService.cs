@@ -3,8 +3,10 @@
     using ApiaryDiary.Data;
     using ApiaryDiary.Data.Models;
     using ApiaryDiary.Data.Models.Enums;
-
+    using ApiaryDiary.Services.Models;
+    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class BeehiveService : IBeehiveService
@@ -62,6 +64,28 @@
 
             this.db.Beehives.AddRange(beehives);
             this.db.SaveChanges();
+        }
+
+        public async Task<IEnumerable<BeehiveListingServiceModel>> ViewAllAsync()
+        {
+            return await this.db
+                .Beehives
+                .Select(b => new BeehiveListingServiceModel
+                {
+                    CreatedOn = b.CreatedOn,
+                    Number = b.Number,
+                    ApiaryName = b.Apiary.Name,
+                    Location = b.Apiary.Locations
+                                    .Select(l => l.Settlement)
+                                    .FirstOrDefault(),
+                    QueenBeeType = b.QueenBees
+                                    .Select(q => q.Type)
+                                    .FirstOrDefault(),
+                    SystemType = b.SystemType,
+                    BeehiveType = b.BeehiveType,
+                })
+                .OrderBy(x => x.ApiaryName)
+                .ToListAsync();
         }
     }
 }

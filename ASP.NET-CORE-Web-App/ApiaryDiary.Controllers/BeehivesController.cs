@@ -90,9 +90,14 @@
             return this.RedirectToAction("Index", "Home");
         }
 
-        public IActionResult ViewAll()
+        public async Task<IActionResult> ViewAll()
         {
-            return this.View();
+            var viewModel = new BeehiveListingViewModel();
+            var beehives = this.beehiveService.ViewAllAsync();
+
+            viewModel.Beehives = await beehives;
+
+            return this.View(viewModel);
         }
     }
 }

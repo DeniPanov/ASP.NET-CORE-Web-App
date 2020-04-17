@@ -52,9 +52,9 @@
             return this.RedirectToAction(nameof(this.ViewAll));
         }
         
-        public async Task<IActionResult> Delete(int apiaryId)
+        public async Task<IActionResult> Delete(int id)
         {
-            await this.apiaryService.DeleteAsync(apiaryId);
+            await this.apiaryService.DeleteAsync(id);
 
             return this.RedirectToAction(nameof(this.ViewAll));
         }

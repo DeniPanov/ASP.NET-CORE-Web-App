@@ -1,0 +1,69 @@
+﻿@using ApiaryDiary.Controllers.Models.Beehives
+@model BeehiveListingViewModel
+
+<div class="container-fluid">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Createtion Date</th>
+                <th scope="col" class="text-center">Beehive Number</th>
+                <th scope="col" class="text-center">Apiary Name</th>
+                <th scope="col" class="text-center">Location</th>
+                <th scope="col" class="text-center">Queen Type</th>
+                <th scope="col" class="text-center">System Type</th>
+                <th scope="col" class="text-center">Beehive Type</th>
+                <th scope="col" class="text-center">Options</th>
+            </tr>
+        </thead>
+
+        @foreach (var beehive in Model.Beehives)
+        {
+            <tbody>
+                <tr>
+                    <td class="text-center">@beehive.CreatedOn</td>
+                    <td class="text-center">@beehive.Number</td>
+                    <td class="text-center">@beehive.ApiaryName</td>
+                    <td class="text-center">@beehive.Location</td>
+                    <td class="text-center">@beehive.QueenBeeType</td>
+                    <td class="text-center">@beehive.SystemType</td>
+                    <td class="text-center">@beehive.BeehiveType</td>
+                    <td class="text-center mx-auto">
+                        <a asp-controller="Apiaries" asp-action="Details" asp-route-id="@beehive.Id">
+                            <input class="btn btn-sm btn-primary m-1"
+                                   type="submit" value="Details" />
+                        </a>
+                        <a asp-controller="Apiaries" asp-action="Edit" asp-route-id="@beehive.Id">
+                            <input class="btn btn-sm btn-warning m-1"
+                                   type="submit" value="Edit" />
+                        </a>
+
+                        <input class="btn btn-sm btn-danger m-1" data-toggle="modal"
+                               data-target="#deleteModal" type="submit" value="Delete" />
+
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">Deleting beehive number "@beehive.Number"?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete beehive number: @beehive.Number?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a asp-controller="Apiaries" asp-action="Delete" asp-route-id="@beehive.Id">
+                                            <button class="btn btn-danger">Yes</button>
+                                        </a>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>

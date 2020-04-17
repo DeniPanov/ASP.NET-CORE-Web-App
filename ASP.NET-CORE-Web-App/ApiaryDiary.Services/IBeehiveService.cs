@@ -1,7 +1,9 @@
 ﻿namespace ApiaryDiary.Services
 {
     using ApiaryDiary.Data.Models.Enums;
+    using ApiaryDiary.Services.Models;
 
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public interface IBeehiveService
@@ -12,5 +14,7 @@
         void CreateMultiple(
             int apiaryId, int firstNumber,int lastNumber,
             SystemType systemType,BeehiveType beehiveType);
+
+        Task<IEnumerable<BeehiveListingServiceModel>> ViewAllAsync();
     }
 }

@@ -23,16 +23,19 @@
                     <td class="text-center">@apiary.Address</td>
                     <td class="text-center mx-auto">
                         <a asp-controller="Apiaries" asp-action="Details" asp-route-id="@apiary.Id">
-                            <input class="btn btn-sm btn-primary m-1"
-                                   type="submit" value="Details" />
+                            <i class="fas fa-clipboard-list "></i>
                         </a>
                         <a asp-controller="Apiaries" asp-action="Edit" asp-route-id="@apiary.Id">
-                            <input class="btn btn-sm btn-warning m-1"
-                                   type="submit" value="Edit" />
+                            <i class="fas fa-pencil-alt"></i>
                         </a>
 
-                        <input class="btn btn-sm btn-danger m-1" data-toggle="modal"
-                               data-target="#deleteModal" type="submit" value="Delete" />
+                        <i class="fas fa-trash-alt" data-toggle="modal"
+                           data-target="#deleteModal">
+                            <span aria-hidden="true">&times;</span>
+                        </i>
+
+                        @*<input class="btn btn-sm btn-danger m-1" data-toggle="modal"
+        data-target="#deleteModal" type="submit" value="Delete" />*@
 
                         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">

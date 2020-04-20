@@ -28,11 +28,11 @@
                     <td class="text-center">@beehive.SystemType</td>
                     <td class="text-center">@beehive.BeehiveType</td>
                     <td class="text-center mx-auto">
-                        <a asp-controller="Apiaries" asp-action="Details" asp-route-id="@beehive.Id">
+                        <a asp-controller="Beehives" asp-action="Details" asp-route-id="@beehive.Id">
                             <input class="btn btn-sm btn-primary m-1"
                                    type="submit" value="Details" />
                         </a>
-                        <a asp-controller="Apiaries" asp-action="Edit" asp-route-id="@beehive.Id">
+                        <a asp-controller="Beehives" asp-action="Edit" asp-route-id="@beehive.Id">
                             <input class="btn btn-sm btn-warning m-1"
                                    type="submit" value="Edit" />
                         </a>
@@ -44,16 +44,16 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">Deleting beehive number "@beehive.Number"?</h5>
+                                        <h5 class="modal-title" id="deleteModalLabel">Deleting beehive number @beehive.Number?</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Are you sure you want to delete beehive number: @beehive.Number?</p>
+                                        <p>Are you sure you want to delete beehive number @beehive.Number?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <a asp-controller="Apiaries" asp-action="Delete" asp-route-id="@beehive.Id">
+                                        <a asp-controller="Beehives" asp-action="Delete" asp-route-id="@beehive.Id">
                                             <button class="btn btn-danger">Yes</button>
                                         </a>
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>

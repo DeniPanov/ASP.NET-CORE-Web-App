@@ -3,11 +3,13 @@
     using ApiaryDiary.Data.Models.Enums;
 
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     public class BeehiveListingServiceModel
     {
         public int Id { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime CreatedOn { get; set; }
 
         public int Number { get; set; }

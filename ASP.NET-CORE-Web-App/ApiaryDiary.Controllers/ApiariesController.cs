@@ -112,6 +112,7 @@
 
         private static EditApiaryPostModel MapNewEditApiary(ApiaryDetailsServiceModel apiary)
         {
+            // TODO: Move this in the service
             return new EditApiaryPostModel
             {
                 Id = apiary.Id,

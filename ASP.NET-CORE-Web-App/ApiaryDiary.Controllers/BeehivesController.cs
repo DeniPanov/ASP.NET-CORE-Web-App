@@ -3,11 +3,13 @@
     using ApiaryDiary.Controllers.Models.Beehives;
     using ApiaryDiary.Services;
 
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     using System.Threading.Tasks;
 
+    [Authorize]
     public class BeehivesController : Controller
     {
         private readonly IBeehiveService beehiveService;
@@ -22,11 +24,6 @@
             this.beehiveService = beehiveService;
             this.apiaryService = apiaryService;
             this.userManager = userManager;
-        }
-
-        public IActionResult Index()
-        {
-            return this.View();
         }
 
         public IActionResult Create()
@@ -83,11 +80,53 @@
                 return this.View(input);
             }
 
-             this.beehiveService.CreateMultiple(
-                apiaryId, input.FirstNumber, input.LastNumber,
-                input.SystemType, input.BeehiveType);
+            this.beehiveService.CreateMultiple(
+               apiaryId, input.FirstNumber, input.LastNumber,
+               input.SystemType, input.BeehiveType);
 
             return this.RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var beehive = await this.beehiveService.DetailsAsync(id);
+
+            if (beehive == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(beehive);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            //if (this.ModelState.IsValid == false)
+            //{
+            //    return this.View();
+            //}
+
+            //var beehive = this.beehiveService.FindById(id);
+            //await this.beehiveService.EditAsync
+            //    (id, beehive.Number, beehive.SystemType, beehive.BeehiveType);
+
+            //return this.RedirectToAction("ViewAll");
+            var beehive = this.beehiveService.FindById(id);
+
+            var editBeehive = new EditBeehivePostModel
+            {
+                Id = id,
+                Number = beehive.Number,
+                SystemType = beehive.SystemType,
+                BeehiveType = beehive.BeehiveType
+            };
+
+            return this.View(editBeehive);
+        }
+
+        public IActionResult Index()
+        {
+            return this.View();
         }
 
         public async Task<IActionResult> ViewAll()

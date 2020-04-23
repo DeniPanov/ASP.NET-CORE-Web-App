@@ -1,5 +1,6 @@
 ﻿namespace ApiaryDiary.Services
 {
+    using ApiaryDiary.Data.Models;
     using ApiaryDiary.Data.Models.Enums;
     using ApiaryDiary.Services.Models;
 
@@ -14,6 +15,13 @@
         void CreateMultiple(
             int apiaryId, int firstNumber,int lastNumber,
             SystemType systemType,BeehiveType beehiveType);
+
+        Task<BeehiveDetailsServiceModel> DetailsAsync(int beehiveId);
+
+        Task EditAsync
+            (int beehiveId, int number, SystemType systemType, BeehiveType beehiveType);
+
+        Beehive FindById(int beehiveId);
 
         Task<IEnumerable<BeehiveListingServiceModel>> ViewAllAsync();
     }

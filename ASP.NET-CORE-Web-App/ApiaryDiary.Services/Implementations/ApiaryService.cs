@@ -84,7 +84,7 @@
 
         public async Task<ApiaryDetailsServiceModel> DetailsAsync(int apiaryId)
         {
-            var result = await this.db
+            return await this.db
                 .Apiaries
                 .Where(a => a.Id == apiaryId)
                 .Select(a => new ApiaryDetailsServiceModel
@@ -97,8 +97,6 @@
                     BeehivesCount = a.Beehives.Count(),
                 })
                 .FirstOrDefaultAsync();
-
-            return result;
         }
 
         public async Task DeleteAsync(int apiaryId)

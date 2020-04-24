@@ -54,6 +54,10 @@ namespace ApiaryDiary
             services.AddTransient<IApiaryService, ApiaryService>();
             services.AddTransient<IBeehiveService, BeehiveService>();
             services.AddTransient<ILocationInfoService, LocationInfoService>();
+            services.AddTransient<IQueenBeeService, QueenBeeService>();
+            services.AddTransient<IStatisticsService, StatisticsService>();
+            services.AddTransient<IInspectionService, InspectionService>();
+            services.AddTransient<INotebookService, NotebookService>(); // Consider AddSingleton here
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -32,11 +32,25 @@
                             <a asp-controller="Beehives" asp-action="Create">Add beehive</a>
                         </li>
                         <li>
-                            <a asp-controller="Beehives" 
+                            <a asp-controller="Beehives"
                                asp-action="CreateMultiple">Add multiple beehives</a>
                         </li>
                         <li>
                             <a asp-controller="Beehives" asp-action="ViewAll">View all</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#queenBeeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">QueenBees</a>
+                    <ul class="collapse list-unstyled" id="queenBeeSubmenu">
+                        <li>
+                            <a href="#">Add new Queen</a>
+                        </li>
+                        <li>
+                            <a href="#">View all beehives with Queens</a>
+                        </li>
+                        <li>
+                            <a href="#">View all beehives without Queens</a>
                         </li>
                     </ul>
                 </li>
@@ -47,21 +61,37 @@
                             <a href="#">Add new location</a>
                         </li>
                         <li>
-                            <a href="#">View all</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
+                            <a href="#">View all locations</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="#inspectionsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inspections</a>
+                    <ul class="collapse list-unstyled" id="inspectionsSubmenu">
+                        <li>
+                            <a href="#">Add new inspection</a>
+                        </li>
+                        <li>
+                            <a href="#">View all inspected beehives</a>
+                        </li>
+                        <li>
+                            <a href="#">View all uninspected beehives</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
+                    <a href="#statisticsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Statistics</a>
+                    <ul class="collapse list-unstyled" id="statisticsSubmenu">
+                        <li>
+                            <a href="#">Beehive statistics</a>
+                        </li>
+                        <li>
+                            <a href="#">Apiary statistics</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#">Notes</a>
                 </li>
             </ul>
         </nav>

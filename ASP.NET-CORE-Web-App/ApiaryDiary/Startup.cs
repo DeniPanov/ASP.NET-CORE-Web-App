@@ -63,6 +63,7 @@ namespace ApiaryDiary
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseExceptionHandling(env);
+            // app.UseStatusCodePages();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

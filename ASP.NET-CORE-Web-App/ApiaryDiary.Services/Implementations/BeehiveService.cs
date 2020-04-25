@@ -7,6 +7,7 @@
 
     using Microsoft.EntityFrameworkCore;
 
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -77,6 +78,7 @@
                 {
                     Id = b.Id,
                     CreatedOn = b.CreatedOn.ToString("r"),
+                    Number = b.Number,
                     ApiaryName = b.Apiary.Name,
                     Location = b.Apiary.Locations
                             .Select(l => l.Settlement)
@@ -96,9 +98,15 @@
         {
             var beehive = this.FindById(beehiveId);
 
+            if (beehive == null)
+            {
+                return;
+            }
+
             beehive.Number = number;
             beehive.SystemType = systemType;
             beehive.BeehiveType = beehiveType;
+            beehive.ModifiedOn = DateTime.UtcNow;
 
             await this.db.SaveChangesAsync();
         }

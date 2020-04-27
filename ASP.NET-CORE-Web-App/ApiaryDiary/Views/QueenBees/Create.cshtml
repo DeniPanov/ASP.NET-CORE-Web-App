@@ -27,6 +27,12 @@
             <span asp-validation-for="Temper" class="text-danger"></span>
         </div>
 
+        <div class="form-group invisible">
+            <label asp-for="BeehiveId"></label>
+            <input asp-for="BeehiveId" value="@Model.BeehiveId" class="form-control col-md-4" />
+            <span asp-validation-for="BeehiveId" class="text-danger"></span>
+        </div>
+
         <br />
 
         <input asp-route-id="@Model.Id" type="submit" value="Create" class="btn btn-primary" />

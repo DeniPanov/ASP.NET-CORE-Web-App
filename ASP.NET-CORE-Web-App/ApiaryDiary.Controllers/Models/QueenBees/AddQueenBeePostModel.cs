@@ -23,5 +23,7 @@
         [MaxLength(TemperMaxLenght)]
         [MinLength(TemperMinLenght)]
         public string Temper { get; set; }
+
+        public int BeehiveId { get; set; }
     }
 }

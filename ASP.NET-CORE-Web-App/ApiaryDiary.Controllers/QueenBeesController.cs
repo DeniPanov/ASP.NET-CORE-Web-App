@@ -20,29 +20,30 @@
             this.beehiveService = beehiveService;
         }
 
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
             var model = new AddQueenBeePostModel()
             {
+                BeehiveId = id,
             };
 
             return this.View(model);
         }
 
         [HttpPost]
-        public IActionResult Create(int id, AddQueenBeePostModel input)
+        public IActionResult Create(AddQueenBeePostModel input)
         {
             if (this.ModelState.IsValid == false)
             {
                 return this.View(input);
             }
 
-            var beehive = this.beehiveService.FindById(id);
+            var beehive = this.beehiveService.FindById(input.BeehiveId);
 
             this.queenBeeService.Create(
-                id, input.QueenType, input.MarkingColour, input.Origin, input.Temper);
+                input.BeehiveId, input.QueenType, input.MarkingColour, input.Origin, input.Temper);
             
-            return this.RedirectToAction("AllHivesWithQueens", "QueenBees");
+            return this.RedirectToAction("ViewAll", "Beehives");
         }
 
         public IActionResult AllHivesWithQueens()

@@ -39,7 +39,7 @@
             };
 
             await this.db.QueenBees.AddAsync(queen);
-            await this.db.SaveChangesAsync();
+            this.db.SaveChangesAsync().GetAwaiter().GetResult();
 
             await AddQueenInBeehive(beehive, queen);
 

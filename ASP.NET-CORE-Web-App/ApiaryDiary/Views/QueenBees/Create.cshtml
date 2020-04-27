@@ -1,0 +1,33 @@
+﻿@using ApiaryDiary.Controllers.Models.QueenBees
+@model AddQueenBeePostModel
+
+    <form asp-action="Create" method="post" class="form">
+        <div class="form-group">
+            <label asp-for="QueenType"></label>
+            <select asp-for="QueenType" class="form-control col-md-4"
+                    asp-items="@Html.GetEnumSelectList<QueenBeeType>()"></select>
+            <span asp-validation-for="QueenType" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MarkingColour"></label>
+            <input asp-for="MarkingColour" class="form-control col-md-4" />
+            <span asp-validation-for="MarkingColour" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Origin"></label>
+            <input asp-for="Origin" class="form-control col-md-4" />
+            <span asp-validation-for="Origin" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Temper"></label>
+            <input asp-for="Temper" class="form-control col-md-4" />
+            <span asp-validation-for="Temper" class="text-danger"></span>
+        </div>
+
+        <br />
+
+        <input asp-route-id="@Model.Id" type="submit" value="Create" class="btn btn-primary" />
+    </form>

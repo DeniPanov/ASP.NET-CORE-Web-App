@@ -69,6 +69,33 @@
             this.db.SaveChanges();
         }
 
+        public void Delete(int beehiveId)
+        {
+            var beehiveToDelete = this.FindById(beehiveId);
+
+            if (beehiveToDelete == null)
+            {
+                return;
+            }
+
+            beehiveToDelete.IsDeleted = true;
+            beehiveToDelete.DeletedOn = DateTime.UtcNow;
+
+            this.db.SaveChanges();
+        }
+
+        public async Task DeleteAllBeehivesInApiary(int apiaryId)
+        {
+            List<Beehive> beehivesToDelete = GetAllBeehives(apiaryId);
+
+            foreach (var beehive in beehivesToDelete)
+            {
+                beehive.IsDeleted = true;
+            }
+
+            await this.db.SaveChangesAsync();
+        }
+
         public async Task<BeehiveDetailsServiceModel> DetailsAsync(int beehiveId)
         {
             return await this.db
@@ -137,7 +164,16 @@
                     BeehiveType = b.BeehiveType,
                 })
                 .OrderBy(x => x.ApiaryName)
+                .ThenBy(x => x.CreatedOn)
                 .ToListAsync();
+        }
+
+        private List<Beehive> GetAllBeehives(int apiaryId)
+        {
+            return this.db
+                .Beehives
+                .Where(b => b.ApiaryId == apiaryId)
+                .ToList();
         }
     }
 }

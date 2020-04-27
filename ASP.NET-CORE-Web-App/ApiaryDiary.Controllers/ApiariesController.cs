@@ -14,15 +14,18 @@
     public class ApiariesController : Controller
     {
         private readonly IApiaryService apiaryService;
+        private readonly IBeehiveService beehiveService;
         private readonly ILocationInfoService locationInfoService;
         private readonly UserManager<IdentityUser> userManager;
 
         public ApiariesController(
             IApiaryService apiaryService,
+            IBeehiveService beehiveService,
             ILocationInfoService locationInfoService,
             UserManager<IdentityUser> userManager)
         {
             this.apiaryService = apiaryService;
+            this.beehiveService = beehiveService;
             this.locationInfoService = locationInfoService;
             this.userManager = userManager;
         }
@@ -55,6 +58,7 @@
         public async Task<IActionResult> Delete(int id)
         {
             await this.apiaryService.DeleteAsync(id);
+            this.beehiveService.DeleteAllBeehivesInApiary(id);
 
             return this.RedirectToAction(nameof(this.ViewAll));
         }

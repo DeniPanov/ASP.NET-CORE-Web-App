@@ -19,18 +19,23 @@
         public static class LocationInfo
         {
             public const int SettlementMaxLenght = 30;
+            public const int SettlementMinLenght = 3;
         }
 
         public static class Note
         {
             public const int NoteMaxLenght = 1000;
+            public const int NoteMinLenght = 1;
         }
 
         public static class QueenBee
         {
-            public const int MarkingColourLenght = 20;
-            public const int OriginLenght = 20;
-            public const int TemperLenght = 20;
+            public const int MarkingColourMaxLenght = 20;
+            public const int MarkingColourMinLenght = 3;
+            public const int OriginMaxLenght = 20;
+            public const int OriginMinLenght = 3;
+            public const int TemperMaxLenght = 20;
+            public const int TemperMinLenght = 3;
         }
     }
 }

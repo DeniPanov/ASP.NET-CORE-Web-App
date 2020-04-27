@@ -2,6 +2,8 @@
 {
     using ApiaryDiary.Data.Models.Enums;
 
+    using static ApiaryDiary.Data.Common.DataConstants.Beehive;
+
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -28,6 +30,7 @@
         public DateTime? DeletedOn { get; set; }
         
         [Required]
+        [MaxLength(BeehiveNumberMaxLenght)]
         public int Number { get; set; }
 
         [Required]

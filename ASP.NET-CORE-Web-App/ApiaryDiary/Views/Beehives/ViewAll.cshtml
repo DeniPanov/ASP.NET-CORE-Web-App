@@ -40,7 +40,7 @@
                             <span aria-hidden="true">&times;</span>
                         </i>
 
-                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" @*aria-labelledby="deleteModalLabel" aria-hidden="true"*@>
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -53,14 +53,17 @@
                                         <p>Are you sure you want to delete beehive number @beehive.Number?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <a asp-controller="Beehives" asp-action="Delete" asp-route-id="@beehive.Id">
-                                            <button class="btn btn-danger">Yes</button>
+                                        <a data-toggle="modal" asp-controller="Beehives" asp-action="Delete" asp-route-id="@beehive.Id">
+                                            <button data-toggle="modal" class="btn btn-danger">Yes</button>
                                         </a>
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @*<a asp-controller="Beehives" asp-action="Delete" asp-route-id="@beehive.Id">
+                                <button class="btn btn-danger">Yes</button>
+                            </a>*@
                     </td>
                 </tr>
             </tbody>

@@ -16,6 +16,10 @@
             int apiaryId, int firstNumber,int lastNumber,
             SystemType systemType,BeehiveType beehiveType);
 
+        void Delete(int id);
+
+        Task DeleteAllBeehivesInApiary(int apiaryId);
+
         Task<BeehiveDetailsServiceModel> DetailsAsync(int beehiveId);
 
         Task EditAsync

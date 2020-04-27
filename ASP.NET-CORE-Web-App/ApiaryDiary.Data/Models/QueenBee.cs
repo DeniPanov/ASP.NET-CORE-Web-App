@@ -12,8 +12,6 @@
         public QueenBee()
         {
             this.CreatedOn = DateTime.UtcNow;
-
-            Type = QueenBeeType.Swarm;
         }
 
         public int Id { get; set; }
@@ -29,13 +27,13 @@
         [Required]
         public QueenBeeType Type { get; set; }
 
-        [MaxLength(MarkingColourLenght)]
+        [MaxLength(MarkingColourMaxLenght)]
         public string MarkingColour { get; set; }
 
-        [MaxLength(OriginLenght)]
+        [MaxLength(OriginMaxLenght)]
         public string Origin { get; set; }
 
-        [MaxLength(TemperLenght)]
+        [MaxLength(TemperMaxLenght)]
         public string Temper { get; set; }
 
         public virtual Beehive Beehive { get; set; }

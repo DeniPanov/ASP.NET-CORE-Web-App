@@ -27,6 +27,19 @@
             this.locationInfoService = locationInfoService;
         }
 
+        public async Task AddNewLocationAsync(int locationId, int apiaryId)
+        {
+            var currentApiary = this.FindById(apiaryId);
+            var currentLocation = this.locationInfoService.FindById(locationId);
+            currentApiary.Locations.Add(currentLocation);
+            await db.SaveChangesAsync();
+        }
+
+        public int ApiariesCount()
+        {
+            return this.db.Apiaries.Count();
+        }
+
         public async Task<int> CreateAsync(
             string userId,
             string apiaryName,
@@ -45,41 +58,19 @@
             return apiary.Id;
         }
 
-        public async Task<IEnumerable<ApiaryListingServiceModel>> ViewAllAsync()
+        public async Task DeleteAsync(int apiaryId)
         {
-            return await db.Apiaries
-                .Where(a => a.IsDeleted == false)
-                .Select(x => new ApiaryListingServiceModel
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    TotalBeehives = x.Beehives.Count(),
-                    Address = x.Locations
-                            .Select(l => l.Settlement)
-                            .FirstOrDefault()
-                })
-                .OrderBy(x => x.TotalBeehives)
-                .ToListAsync();
-        }
+            var apiary = this.FindById(apiaryId);
 
-        public async Task AddNewLocationAsync(int locationId, int apiaryId)
-        {
-            var currentApiary = this.FindById(apiaryId);
-            var currentLocation = this.locationInfoService.FindById(locationId);
-            currentApiary.Locations.Add(currentLocation);
+            if (apiary == null)
+            {
+                return;
+            }
+
+            apiary.IsDeleted = true;
+            apiary.DeletedOn = DateTime.UtcNow;
+
             await db.SaveChangesAsync();
-        }
-
-        public Apiary FindById(int apiaryId)
-        {
-            return db.Apiaries
-                .Where(a => a.Id == apiaryId)
-                .FirstOrDefault();
-        }
-
-        public int ApiariesCount()
-        {
-            return this.db.Apiaries.Count();
         }
 
         public async Task<ApiaryDetailsServiceModel> DetailsAsync(int apiaryId)
@@ -97,21 +88,6 @@
                     BeehivesCount = a.Beehives.Count(),
                 })
                 .FirstOrDefaultAsync();
-        }
-
-        public async Task DeleteAsync(int apiaryId)
-        {
-            var apiary = this.FindById(apiaryId);
-
-            if (apiary == null)
-            {
-                return;
-            }
-
-            apiary.IsDeleted = true;
-            apiary.DeletedOn = DateTime.UtcNow;
-
-            await db.SaveChangesAsync();
         }
 
         public async Task EditAsync(
@@ -135,6 +111,13 @@
             await this.db.SaveChangesAsync();
         }
 
+        public Apiary FindById(int apiaryId)
+        {
+            return db.Apiaries
+                .Where(a => a.Id == apiaryId)
+                .FirstOrDefault();
+        }
+
         public IEnumerable<SelectListItem> GetAll(string userId)
         {
             var apiaries = this.db
@@ -154,6 +137,23 @@
             }
 
             return listItems;
+        }
+
+        public async Task<IEnumerable<ApiaryListingServiceModel>> ViewAllAsync()
+        {
+            return await db.Apiaries
+                .Where(a => a.IsDeleted == false)
+                .Select(x => new ApiaryListingServiceModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    TotalBeehives = x.Beehives.Count(),
+                    Address = x.Locations
+                            .Select(l => l.Settlement)
+                            .FirstOrDefault()
+                })
+                .OrderBy(x => x.TotalBeehives)
+                .ToListAsync();
         }
     }
 }

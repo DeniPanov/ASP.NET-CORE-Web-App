@@ -87,6 +87,13 @@
             return this.RedirectToAction("Index", "Home");
         }
 
+        public IActionResult Delete(int id)
+        {
+            this.beehiveService.Delete(id);
+
+            return this.RedirectToAction(nameof(ViewAll));
+        }
+
         public async Task<IActionResult> Details(int id)
         {
             var beehive = await this.beehiveService.DetailsAsync(id);
@@ -101,16 +108,6 @@
 
         public IActionResult Edit(int id)
         {
-            //if (this.ModelState.IsValid == false)
-            //{
-            //    return this.View();
-            //}
-
-            //var beehive = this.beehiveService.FindById(id);
-            //await this.beehiveService.EditAsync
-            //    (id, beehive.Number, beehive.SystemType, beehive.BeehiveType);
-
-            //return this.RedirectToAction("ViewAll");
             var beehive = this.beehiveService.FindById(id);
 
             var editBeehive = new EditBeehivePostModel
@@ -124,6 +121,21 @@
             return this.View(editBeehive);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditBeehivePostModel input)
+        {
+            if (this.ModelState.IsValid == false)
+            {
+                return this.View(input);
+            }
+
+            // var beehive = this.beehiveService.FindById(id);
+            await this.beehiveService.EditAsync
+                (input.Id, input.Number, input.SystemType, input.BeehiveType);
+
+            return this.RedirectToAction(nameof(ViewAll));
+        }
+
         public IActionResult Index()
         {
             return this.View();
@@ -132,9 +144,9 @@
         public async Task<IActionResult> ViewAll()
         {
             var viewModel = new BeehiveListingViewModel();
-            var beehives = this.beehiveService.ViewAllAsync();
+            var beehives = await this.beehiveService.ViewAllAsync();
 
-            viewModel.Beehives = await beehives;
+            viewModel.Beehives = beehives;
 
             return this.View(viewModel);
         }

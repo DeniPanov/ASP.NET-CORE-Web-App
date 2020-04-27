@@ -37,6 +37,8 @@
                 <p class="card-text"><span class="text-dark">Beehive Type:</span> @Model.BeehiveType</p>
                 <p class="card-text"><span class="text-dark">Queen Type:</span> @Model.QueenType</p>
                 <a asp-controller="Beehives" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+                <a asp-controller="QueenBees" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-success ml-2">Add Queen</a>
+                <a asp-controller="Inspections" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-success ml-2">Add Inspection</a>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
         public int Id { get; set; }
 
         [MinLength(BeehiveNumberMinLenght)]
-        [MaxLength(BeehiveNumberMinLenght)]
+        [MaxLength(BeehiveNumberMaxLenght)]
         public int Number { get; set; }
 
         public SystemType SystemType { get; set; }

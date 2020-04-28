@@ -15,10 +15,14 @@
     public class BeehiveService : IBeehiveService
     {
         private readonly ApiaryDiaryDbContext db;
+        private readonly IApiaryService apiaryService;
 
-        public BeehiveService(ApiaryDiaryDbContext db)
+        public BeehiveService(
+            ApiaryDiaryDbContext db,
+            IApiaryService apiaryService)
         {
             this.db = db;
+            this.apiaryService = apiaryService;
         }
 
         public async Task<int> CreateAsync(
@@ -38,6 +42,7 @@
 
             await this.db.Beehives.AddAsync(beehive);
             await this.db.SaveChangesAsync();
+            AddSingleBeehiveToApiary(apiaryId, beehive);
 
             return beehive.Id;
         }
@@ -67,6 +72,7 @@
 
             this.db.Beehives.AddRange(beehives);
             this.db.SaveChanges();
+            AddMultipleBeehivesToApiary(apiaryId, beehives);
         }
 
         public void Delete(int beehiveId)
@@ -91,6 +97,7 @@
             foreach (var beehive in beehivesToDelete)
             {
                 beehive.IsDeleted = true;
+                beehive.DeletedOn = DateTime.UtcNow;
             }
 
             await this.db.SaveChangesAsync();
@@ -166,6 +173,24 @@
                 .OrderBy(x => x.ApiaryName)
                 .ThenBy(x => x.CreatedOn)
                 .ToListAsync();
+        }
+
+        private void AddMultipleBeehivesToApiary(int apiaryId, List<Beehive> beehives)
+        {
+            var apiary = this.apiaryService.FindById(apiaryId);
+
+            foreach (var beehive in beehives)
+            {
+                apiary.Beehives.Add(beehive);
+            }
+
+            this.db.SaveChanges();
+        }
+
+        private void AddSingleBeehiveToApiary(int apiaryId, Beehive beehive)
+        {
+            var apiary = this.apiaryService.FindById(apiaryId);
+            apiary.Beehives.Add(beehive);
         }
 
         private List<Beehive> GetAllBeehives(int apiaryId)

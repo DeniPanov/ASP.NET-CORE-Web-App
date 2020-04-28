@@ -6,9 +6,13 @@
     <StartupObject>ApiaryDiary.Program</StartupObject>
   </PropertyGroup>
 
-  <ItemGroup>
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet> 
+  </PropertyGroup>
+  
+  <!--<ItemGroup>
     <Content Remove="stylecop.json" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />

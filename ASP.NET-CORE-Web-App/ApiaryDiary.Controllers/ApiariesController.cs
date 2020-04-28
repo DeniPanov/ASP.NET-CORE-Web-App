@@ -58,7 +58,7 @@
         public async Task<IActionResult> Delete(int id)
         {
             await this.apiaryService.DeleteAsync(id);
-            this.beehiveService.DeleteAllBeehivesInApiary(id);
+            await this.beehiveService.DeleteAllBeehivesInApiary(id);
 
             return this.RedirectToAction(nameof(this.ViewAll));
         }

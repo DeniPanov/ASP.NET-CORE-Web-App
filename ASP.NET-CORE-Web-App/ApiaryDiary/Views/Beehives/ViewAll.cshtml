@@ -29,14 +29,13 @@
                     <td class="text-center">@beehive.BeehiveType</td>
                     <td class="text-center mx-auto">
                         <a asp-controller="Beehives" asp-action="Details" asp-route-id="@beehive.Id">
-                            <i class="fas fa-clipboard-list "></i>
+                            <i class="fas fa-clipboard-list" data-toggle="tooltip" data-placement="top" title="Details"></i>
                         </a>
                         <a asp-controller="Beehives" asp-action="Edit" asp-route-id="@beehive.Id">
-                            <i class="fas fa-pencil-alt"></i>
+                            <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="top" title="Edit"></i>
                         </a>
-
                         <a asp-controller="Beehives" asp-action="Delete" asp-route-id="@beehive.Id">
-                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete"></i>
                         </a>
                     </td>
                 </tr>

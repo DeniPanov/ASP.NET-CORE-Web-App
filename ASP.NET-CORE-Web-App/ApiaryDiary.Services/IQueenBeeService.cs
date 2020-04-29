@@ -16,6 +16,6 @@
 
         Task<IEnumerable<AllBeehivesWithQueensServiceViewModel>> GetAllBeehivesWithQueens();
 
-        Task<IEnumerable<AllBeehivesWithQueensServiceViewModel>> GetAllBeehivesWithoutQueens();
+        Task<IEnumerable<AllBeehivesWithoutQueensServiceViewModel>> GetAllBeehivesWithoutQueens();
     }
 }

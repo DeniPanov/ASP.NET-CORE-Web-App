@@ -25,9 +25,9 @@
         public async Task<IActionResult> AllHivesWithQueens()
         {
             var viewModel = new AllBeehivesWithQueensListingViewModel();
-            var allBeehivesWithQueens = this.queenBeeService.GetAllBeehivesWithQueens();
+            var allBeehivesWithQueens = await this.queenBeeService.GetAllBeehivesWithQueens();
 
-            viewModel.BeehivesWithQueens = await allBeehivesWithQueens;
+            viewModel.BeehivesWithQueens = allBeehivesWithQueens;
 
             return this.View(viewModel);
         }
@@ -35,9 +35,9 @@
         public async Task<IActionResult> AllHivesWithoutQueens()
         {
             var viewModel = new AllBeehivesWithQueensListingViewModel();
-            var allBeehivesWithQueens = this.queenBeeService.GetAllBeehivesWithoutQueens();
+            var allBeehivesWithQueens = await this.queenBeeService.GetAllBeehivesWithoutQueens();
 
-            viewModel.BeehivesWithQueens = await allBeehivesWithQueens;
+            viewModel.BeehivesWithoutQueens = allBeehivesWithQueens;
 
             return this.View(viewModel);
         }

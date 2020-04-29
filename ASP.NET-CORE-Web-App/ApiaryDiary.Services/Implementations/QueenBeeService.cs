@@ -63,6 +63,9 @@
                {
                    ApiaryName = b.Apiary.Name,
                    BeehiveNumber = b.Number,
+                   QueenId = b.QueenBees
+                            .Select(q => q.Id)
+                            .FirstOrDefault(),
                    QueenType = b.QueenBees
                            .Select(q => q.Type)
                            .FirstOrDefault(),
@@ -73,21 +76,18 @@
                .ToListAsync();
         }
 
-        public async Task<IEnumerable<AllBeehivesWithQueensServiceViewModel>> GetAllBeehivesWithoutQueens()
+        public async Task<IEnumerable<AllBeehivesWithoutQueensServiceViewModel>> GetAllBeehivesWithoutQueens()
         {
             return await this.db
                 .Beehives
                 .Where(b => b.HasQueen == false)
-                .Select(b => new AllBeehivesWithQueensServiceViewModel
+                .Select(b => new AllBeehivesWithoutQueensServiceViewModel
                 {
                     Id = b.Id,
                     ApiaryName = b.Apiary.Name,
                     BeehiveNumber = b.Number,
                     QueenType = b.QueenBees
                            .Select(q => q.Type)
-                           .FirstOrDefault(),
-                    QueenCreatedOn = b.QueenBees
-                           .Select(q => q.CreatedOn)
                            .FirstOrDefault(),
                 })
                 .ToListAsync();

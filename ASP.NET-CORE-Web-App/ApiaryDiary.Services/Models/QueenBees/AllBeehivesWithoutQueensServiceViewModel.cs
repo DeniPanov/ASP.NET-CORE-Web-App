@@ -2,9 +2,7 @@
 {
     using ApiaryDiary.Data.Models.Enums;
 
-    using System;
-
-    public class AllBeehivesWithQueensServiceViewModel
+    public class AllBeehivesWithoutQueensServiceViewModel
     {
         public int Id { get; set; }
 
@@ -12,10 +10,6 @@
 
         public int BeehiveNumber { get; set; }
 
-        public int QueenId { get; set; }
-
         public QueenBeeType QueenType { get; set; }
-
-        public DateTime QueenCreatedOn { get; set; }
     }
 }

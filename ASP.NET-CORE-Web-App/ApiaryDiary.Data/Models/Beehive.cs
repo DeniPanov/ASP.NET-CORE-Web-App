@@ -43,6 +43,8 @@
 
         public bool IsAlive { get; set; }
 
+        public bool HasQueen { get; set; }
+
         public string Notes { get; set; }
 
         public virtual Apiary Apiary { get; set; }

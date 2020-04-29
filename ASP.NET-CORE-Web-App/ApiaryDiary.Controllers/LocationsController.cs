@@ -54,6 +54,40 @@
             return this.RedirectToAction(nameof(ViewAll));
         }
 
+        public IActionResult Edit(int id)
+        {
+            var location = this.locationInfoService.FindById(id);
+
+            if (location == null)
+            {
+                return this.NotFound();
+            }
+
+            var viewModel = new EditLocationPostModel
+            {
+                Id = location.Id,
+                Settlement = location.Settlement,
+                Altitude = location.Altitude,
+                Description = location.Description,
+            };
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditLocationPostModel input)
+        {
+            if (this.ModelState.IsValid == false)
+            {
+                return this.View(input);
+            }
+
+            await this.locationInfoService.EditAsync
+                (input.Id, input.Settlement, input.Altitude, input.Description);
+
+            return this.RedirectToAction(nameof(ViewAll));
+        }
+
         public async Task<IActionResult> ViewAll()
         {
             var viewModel = new LocationsListingViewModel();

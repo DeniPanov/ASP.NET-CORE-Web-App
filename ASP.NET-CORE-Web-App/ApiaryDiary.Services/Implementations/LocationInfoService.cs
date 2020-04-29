@@ -6,6 +6,7 @@
 
     using Microsoft.EntityFrameworkCore;
 
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -52,6 +53,24 @@
             return location.Id;
         }
 
+        public async Task EditAsync(
+            int locationId, string settlement, int altitude, string description)
+        {
+            var location = this.FindById(locationId);
+
+            if (location == null)
+            {
+                return;
+            }
+
+            location.Settlement = settlement;
+            location.Altitude = altitude;
+            location.Description = description;
+            location.ModifiedOn = DateTime.UtcNow;
+
+            await this.db.SaveChangesAsync();
+        }
+
         public LocationInfo FindById(int locationId)
         {
             return db.Locations
@@ -72,7 +91,7 @@
                         Altitude = l.Altitude,
                         Description = l.Description,
                     })
-                    .ToListAsync();                   
+                    .ToListAsync();
         }
     }
 }

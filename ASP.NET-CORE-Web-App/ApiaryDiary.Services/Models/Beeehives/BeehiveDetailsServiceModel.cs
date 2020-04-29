@@ -1,4 +1,4 @@
-﻿namespace ApiaryDiary.Services.Models
+﻿namespace ApiaryDiary.Services.Models.Beehives
 {
     using ApiaryDiary.Data.Models.Enums;
 

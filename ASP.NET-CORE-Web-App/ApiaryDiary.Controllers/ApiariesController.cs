@@ -2,7 +2,7 @@
 {
     using ApiaryDiary.Controllers.Models.Apiaries;
     using ApiaryDiary.Services;
-    using ApiaryDiary.Services.Models;
+    using ApiaryDiary.Services.Models.Apiaries;
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;

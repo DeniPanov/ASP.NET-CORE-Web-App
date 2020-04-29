@@ -3,7 +3,7 @@
     using ApiaryDiary.Data;
     using ApiaryDiary.Data.Models;
     using ApiaryDiary.Data.Models.Enums;
-    using ApiaryDiary.Services.Models;
+    using ApiaryDiary.Services.Models.Apiaries;
 
     using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore;

@@ -1,6 +1,6 @@
 ﻿namespace ApiaryDiary.Controllers.Models.Apiaries
 {
-    using ApiaryDiary.Services.Models;
+    using ApiaryDiary.Services.Models.Apiaries;
 
     using System.Collections.Generic;
 

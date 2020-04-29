@@ -1,6 +1,6 @@
 ﻿namespace ApiaryDiary.Controllers.Models.Beehives
 {
-    using ApiaryDiary.Services.Models;
+    using ApiaryDiary.Services.Models.Beehives;
 
     using System.Collections.Generic;
 

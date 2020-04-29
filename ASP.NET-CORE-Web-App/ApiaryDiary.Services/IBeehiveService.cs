@@ -2,7 +2,7 @@
 {
     using ApiaryDiary.Data.Models;
     using ApiaryDiary.Data.Models.Enums;
-    using ApiaryDiary.Services.Models;
+    using ApiaryDiary.Services.Models.Beehives;
 
     using System.Collections.Generic;
     using System.Threading.Tasks;

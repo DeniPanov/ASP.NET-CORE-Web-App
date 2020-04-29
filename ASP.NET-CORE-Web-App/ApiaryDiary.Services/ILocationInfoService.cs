@@ -6,7 +6,11 @@
 
     public interface ILocationInfoService
     {
-        Task<int> CreateAsync(int apiryId, string settlement);
+        Task<int> CreateDetailedAsync(
+            int apiryId, string settlement, int altitude,
+            bool hasHoneyPlants, string description);
+
+        Task<int> CreatePartialAsync(int apiryId, string settlement);
 
         LocationInfo FindById(int locationId);
     }

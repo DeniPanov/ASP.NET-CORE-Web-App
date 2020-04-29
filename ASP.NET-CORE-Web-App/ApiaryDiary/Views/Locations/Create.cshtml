@@ -1,0 +1,44 @@
+﻿@using ApiaryDiary.Controllers.Models.Locations
+@model AddLocationPostModel
+
+    <form asp-action="Create" method="post" class="form">
+        @*Dropdown from db*@
+        <div class="form-group">
+            <label asp-for="SelectedApiary"></label>
+            <select asp-for="SelectedApiary" class="form-control col-md-4"
+                    asp-items="Model.AllApairies"></select>
+            <span asp-validation-for="SelectedApiary" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Settlement"></label>
+            <input asp-for="Settlement" class="form-control col-md-4" />
+            <span asp-validation-for="Settlement" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Altitude"></label>
+            <input asp-for="Altitude" class="form-control col-md-4" />
+            <span asp-validation-for="Altitude" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description" for="exampleFormControlTextarea1"></label>
+            <textarea asp-for="Description" class="form-control col-md-4" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <h6>Are there honey plants in the area?</h6>
+        <div class="form-check">
+            <input asp-for="HasHoneyPlants" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Yes" checked>
+            <label asp-for="HasHoneyPlants" class="form-check-label" for="exampleRadios1">Yes</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="No">
+            <label class="form-check-label" for="exampleRadios2">No</label>
+        </div>
+
+        <br />
+
+        <input asp-route-id="@Model.Id" type="submit" value="Create" class="btn btn-primary" />
+    </form>

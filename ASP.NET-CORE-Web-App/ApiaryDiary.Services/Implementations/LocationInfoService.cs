@@ -15,7 +15,7 @@
             this.db = db;
         }
 
-        public async Task<int> CreateAsync(int apiryId, string settlement)
+        public async Task<int> CreatePartialAsync(int apiryId, string settlement)
         {
             var location = new LocationInfo
             {
@@ -23,8 +23,27 @@
                 ApiaryId = apiryId
             };
 
-            db.Locations.Add(location);
-            await db.SaveChangesAsync();
+            this.db.Locations.Add(location);
+            await this.db.SaveChangesAsync();
+
+            return location.Id;
+        }
+
+        public async Task<int> CreateDetailedAsync(
+            int apiryId, string settlement, int altitude,
+            bool hasHoneyPlants, string description)
+        {
+            var location = new LocationInfo
+            {
+                ApiaryId = apiryId,
+                Settlement = settlement,
+                Altitude = altitude,
+                HasHoneyPlants = hasHoneyPlants,
+                Description = description,
+            };
+
+            this.db.Locations.Add(location);
+            await this.db.SaveChangesAsync();
 
             return location.Id;
         }

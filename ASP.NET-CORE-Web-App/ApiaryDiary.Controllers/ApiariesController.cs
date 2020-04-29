@@ -48,7 +48,7 @@
             var apiaryId = await this.apiaryService.
                 CreateAsync(userId, model.Name, model.Capacity);
             var locationId = await this.locationInfoService.
-                CreateAsync(apiaryId, model.Settlement);
+                CreatePartialAsync(apiaryId, model.Settlement);
 
             await this.apiaryService.AddNewLocationAsync(locationId, apiaryId);
 

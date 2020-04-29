@@ -56,7 +56,12 @@
 
         public async Task<IActionResult> ViewAll()
         {
-            return this.View();
+            var viewModel = new LocationsListingViewModel();
+            var allLocations = await this.locationInfoService.ViewAll();
+
+            viewModel.Locations = allLocations;
+
+            return this.View(viewModel);
         }
     }
 }

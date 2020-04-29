@@ -1,0 +1,36 @@
+﻿@using ApiaryDiary.Controllers.Models.Locations
+@model LocationsListingViewModel
+
+<div class="container-fluid">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Apiary Name</th>
+                <th scope="col" class="text-center">Settlement</th>
+                <th scope="col" class="text-center">Altitude</th>
+                <th scope="col" class="text-center">Description</th>
+                <th scope="col" class="text-center">Options</th>
+            </tr>
+        </thead>
+
+        @foreach (var location in Model.Locations)
+        {
+            <tbody>
+                <tr>
+                    <td class="text-center">@location.ApiaryName</td>
+                    <td class="text-center">@location.Settlement</td>
+                    <td class="text-center">@location.Altitude</td>
+                    <td class="text-center">@location.Description</td>
+                    <td class="text-center mx-auto">
+                        <a asp-controller="Beehives" asp-action="Edit" asp-route-id="@location.Id">
+                            <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="top" title="Edit"></i>
+                        </a>
+                        <a asp-controller="Beehives" asp-action="Delete" asp-route-id="@location.Id">
+                            <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>

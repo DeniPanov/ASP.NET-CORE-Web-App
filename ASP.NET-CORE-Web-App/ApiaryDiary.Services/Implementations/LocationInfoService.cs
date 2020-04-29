@@ -1,8 +1,12 @@
 ﻿namespace ApiaryDiary.Services.Implementations
 {
+    using ApiaryDiary.Controllers.Models.Locations;
     using ApiaryDiary.Data;
     using ApiaryDiary.Data.Models;
 
+    using Microsoft.EntityFrameworkCore;
+
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -53,6 +57,22 @@
             return db.Locations
                 .Where(l => l.Id == locationId)
                 .FirstOrDefault();
+        }
+
+        public async Task<IEnumerable<LocationsListingServiceModel>> ViewAll()
+        {
+            return await this.db
+                    .Locations
+                    .Where(l => l.IsDeleted == false)
+                    .Select(l => new LocationsListingServiceModel
+                    {
+                        Id = l.Id,
+                        ApiaryName = l.Apiary.Name,
+                        Settlement = l.Settlement,
+                        Altitude = l.Altitude,
+                        Description = l.Description,
+                    })
+                    .ToListAsync();                   
         }
     }
 }

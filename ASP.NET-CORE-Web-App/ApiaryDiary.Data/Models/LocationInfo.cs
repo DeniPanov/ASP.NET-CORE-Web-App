@@ -30,6 +30,9 @@
 
         public bool HasHoneyPlants { get; set; }
 
+        [MaxLength(DescriptionMaxLenght)]
+        public string Description { get; set; }
+
         public virtual Apiary Apiary { get; set; }
 
         public int ApiaryId { get; set; }

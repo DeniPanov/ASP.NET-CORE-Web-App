@@ -20,6 +20,7 @@
         {
             public const int SettlementMaxLenght = 30;
             public const int SettlementMinLenght = 3;
+            public const int DescriptionMaxLenght = 200;
         }
 
         public static class Note

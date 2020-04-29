@@ -9,8 +9,13 @@
 
     public interface IQueenBeeService
     {
-        Task<int> Create(int beehiveId, QueenBeeType queenType,
+        Task<int> CreateAsync(int beehiveId, QueenBeeType queenType,
             string markingColour, string origin, string temper);
+
+        Task DeleteAsync(int queenId);
+
+        Task EditAsync(
+            int queenId, QueenBeeType type, string markingColour, string origin, string temper);
 
         QueenBee FindById(int id);
 

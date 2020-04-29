@@ -62,21 +62,59 @@
 
             var beehive = this.beehiveService.FindById(input.BeehiveId);
 
-            this.queenBeeService.Create(
+            this.queenBeeService.CreateAsync(
                 input.BeehiveId, input.QueenType, input.MarkingColour, input.Origin, input.Temper);
             
             return this.RedirectToAction("ViewAll", "Beehives");
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return this.View();
+            if (this.ModelState.IsValid == false)
+            {
+                return this.NotFound();
+            }
+
+            await this.queenBeeService.DeleteAsync(id);
+
+            return this.RedirectToAction(nameof(AllHivesWithQueens));
         }
 
         public IActionResult Edit(int id)
         {
-            return this.View();
+            var queen = this.queenBeeService.FindById(id);
+
+            if (queen == null)
+            {
+                return this.NotFound();
+            }
+
+            var viemModel = new EditQueenBeePostModel
+            {
+                Id = queen.Id,
+                QueenType = queen.Type,
+                MarkingColour =  queen.MarkingColour,
+                Origin = queen.Origin,
+                Temper = queen.Temper
+            };
+
+            return this.View(viemModel);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditQueenBeePostModel input)
+        {
+            if (this.ModelState.IsValid == false)
+            {
+                return this.View(input);
+            }
+
+            await this.queenBeeService.EditAsync(
+                input.Id, input.QueenType, input.MarkingColour, input.Origin, input.Temper);
+
+            return this.RedirectToAction(nameof(AllHivesWithQueens));
+        }
+
 
     }
 }

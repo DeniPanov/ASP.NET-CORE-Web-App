@@ -70,7 +70,7 @@
             apiary.IsDeleted = true;
             apiary.DeletedOn = DateTime.UtcNow;
 
-            await db.SaveChangesAsync();
+            await this.db.SaveChangesAsync();
         }
 
         public async Task<ApiaryDetailsServiceModel> DetailsAsync(int apiaryId)

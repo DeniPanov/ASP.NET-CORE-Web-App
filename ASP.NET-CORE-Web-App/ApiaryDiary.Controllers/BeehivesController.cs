@@ -89,6 +89,11 @@
 
         public IActionResult Delete(int id)
         {
+            if (this.ModelState.IsValid == false)
+            {
+                return this.NotFound();
+            }
+
             this.beehiveService.Delete(id);
 
             return this.RedirectToAction(nameof(ViewAll));
@@ -129,7 +134,6 @@
                 return this.View(input);
             }
 
-            // var beehive = this.beehiveService.FindById(id);
             await this.beehiveService.EditAsync
                 (input.Id, input.Number, input.SystemType, input.BeehiveType);
 

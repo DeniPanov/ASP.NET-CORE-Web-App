@@ -98,7 +98,7 @@
                 return this.View(input);
             }
 
-            await apiaryService.EditAsync(
+            await this.apiaryService.EditAsync(
                 input.Id, input.Name, input.BeekeepingType, input.Capacity);
 
             return RedirectToAction(nameof(ViewAll));

@@ -15,27 +15,26 @@
 
         @foreach (var beehive in Model.BeehivesWithQueens)
         {
-        <tbody>
-            <tr>
-                <td class="text-center">@beehive.ApiaryName</td>
-                <td class="text-center">@beehive.BeehiveNumber</td>
-                <td class="text-center">@beehive.QueenType</td>
-                <td class="text-center">@beehive.QueenCreatedOn</td>
+            <tbody>            
+                <tr>
+                    <td class="text-center">@beehive.ApiaryName</td>
+                    <td class="text-center">@beehive.BeehiveNumber</td>
+                    <td class="text-center">@beehive.QueenType</td>
+                    <td class="text-center">@beehive.QueenCreatedOn</td>
 
-                <td class="text-center mx-auto">
-                    <a asp-controller="QueenBees" asp-action="Create" asp-route-id="@beehive.Id">
-                        <i class="fas fa-plus" data-toggle="tooltip" data-placement="top" title="Add another queen"></i>
-                    </a>
-
-                    <a asp-controller="QueenBees" asp-action="Edit" asp-route-id="@beehive.QueenId">
-                        <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="top" title="Edit current queen"></i>
-                    </a>
-                    <a asp-controller="QueenBees" asp-action="Delete" asp-route-id="@beehive.QueenId">
-                        <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete current queen"></i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+                    <td class="text-center mx-auto">
+                        <a asp-controller="QueenBees" asp-action="Create" asp-route-id="@beehive.Id">
+                            <i class="fas fa-plus" data-toggle="tooltip" data-placement="top" title="Add another queen"></i>
+                        </a>
+                        <a asp-controller="QueenBees" asp-action="Edit" asp-route-id="@beehive.QueenId">
+                            <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="top" title="Edit current queen"></i>
+                        </a>
+                        <a asp-controller="QueenBees" asp-action="Delete" asp-route-id="@beehive.QueenId">
+                            <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete current queen"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
         }
     </table>
 </div>

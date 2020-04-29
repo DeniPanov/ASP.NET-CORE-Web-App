@@ -6,6 +6,8 @@
     using ApiaryDiary.Data.Models.Enums;
 
     using Microsoft.EntityFrameworkCore;
+
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -23,7 +25,7 @@
             this.beehiveService = beehiveService;
         }
 
-        public async Task<int> Create(
+        public async Task<int> CreateAsync(
             int beehiveId,
             QueenBeeType queenType,
             string markingColour,
@@ -41,12 +43,48 @@
                 Temper = temper,
             };
 
+            beehive.HasQueen = true;
+
             await this.db.QueenBees.AddAsync(queen);
             this.db.SaveChangesAsync().GetAwaiter().GetResult();
 
             await AddQueenInBeehive(beehive, queen);
 
             return queen.Id;
+        }
+
+        public async Task DeleteAsync(int queenId)
+        {
+            var queen = this.FindById(queenId);
+
+            if (queen == null)
+            {
+                return;
+            }
+
+            queen.IsDeleted = true;
+            queen.DeletedOn = DateTime.UtcNow;
+
+            await this.db.SaveChangesAsync();
+        }
+
+        public async Task EditAsync(
+            int queenId, QueenBeeType type, string markingColour, string origin, string temper)
+        {
+            var queen = this.FindById(queenId);
+
+            if (queen == null)
+            {
+                return;
+            }
+
+            queen.Type = type;
+            queen.MarkingColour = markingColour;
+            queen.Origin = origin;
+            queen.Temper = temper;
+            queen.ModifiedOn = DateTime.UtcNow;
+
+            await this.db.SaveChangesAsync();
         }
 
         public QueenBee FindById(int id)
@@ -58,9 +96,10 @@
         {
             return await this.db
                .Beehives
-               .Where(b => b.HasQueen == true)
+               .Where(b => b.HasQueen == true && b.IsDeleted == false)
                .Select(b => new AllBeehivesWithQueensServiceViewModel
                {
+                   Id = b.Id,
                    ApiaryName = b.Apiary.Name,
                    BeehiveNumber = b.Number,
                    QueenId = b.QueenBees
@@ -80,7 +119,7 @@
         {
             return await this.db
                 .Beehives
-                .Where(b => b.HasQueen == false)
+                .Where(b => b.HasQueen == false && b.IsDeleted == false)
                 .Select(b => new AllBeehivesWithoutQueensServiceViewModel
                 {
                     Id = b.Id,

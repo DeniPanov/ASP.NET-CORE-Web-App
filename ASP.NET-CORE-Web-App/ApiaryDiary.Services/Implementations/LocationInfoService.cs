@@ -53,6 +53,21 @@
             return location.Id;
         }
 
+        public async Task DeleteAsync(int locationId)
+        {
+            var location = this.FindById(locationId);
+
+            if (location == null)
+            {
+                return;
+            }
+
+            location.IsDeleted = true;
+            location.DeletedOn = DateTime.UtcNow;
+
+            await this.db.SaveChangesAsync();
+        }
+
         public async Task EditAsync(
             int locationId, string settlement, int altitude, string description)
         {

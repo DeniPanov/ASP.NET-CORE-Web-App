@@ -14,6 +14,8 @@
 
         Task<int> CreatePartialAsync(int apiryId, string settlement);
 
+        Task DeleteAsync(int locationId);
+
         Task EditAsync(int locationId, string settlement, int altitude, string description);
 
         LocationInfo FindById(int locationId);

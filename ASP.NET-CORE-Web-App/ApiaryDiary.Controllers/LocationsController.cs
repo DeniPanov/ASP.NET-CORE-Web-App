@@ -54,6 +54,18 @@
             return this.RedirectToAction(nameof(ViewAll));
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (this.ModelState.IsValid == false)
+            {
+                return this.NotFound();
+            }
+
+            await this.locationInfoService.DeleteAsync(id);
+
+            return this.RedirectToAction(nameof(ViewAll));
+        }
+
         public IActionResult Edit(int id)
         {
             var location = this.locationInfoService.FindById(id);

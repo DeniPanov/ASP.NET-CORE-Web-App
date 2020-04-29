@@ -1,0 +1,40 @@
+﻿@using ApiaryDiary.Controllers.Models.QueenBees
+@model AllBeehivesWithQueensListingViewModel
+
+<div class="container-fluid">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Apiary Name</th>
+                <th scope="col" class="text-center">Beehive Number</th>
+                <th scope="col" class="text-center">Queen Type</th>
+                <th scope="col" class="text-center">Queen Created On</th>
+                <th scope="col" class="text-center">Options</th>
+            </tr>
+        </thead>
+
+        @foreach (var beehive in Model.BeehivesWithQueens)
+        {
+            <tbody>
+                <tr>
+                    <td class="text-center">@beehive.ApiaryName</td>
+                    <td class="text-center">@beehive.BeehiveNumber</td>
+                    <td class="text-center">@beehive.QueenType</td>
+                    <td class="text-center">@beehive.QueenCreatedOn</td>
+
+                    <td class="text-center mx-auto">
+                        <a asp-controller="QueenBees" asp-action="Edit" asp-route-id="@beehive.Id">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        <a asp-controller="QueenBees" asp-action="Delete" asp-route-id="@beehive.Id">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                        <a asp-controller="QueenBees" asp-action="Create" asp-route-id="@beehive.Id">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>

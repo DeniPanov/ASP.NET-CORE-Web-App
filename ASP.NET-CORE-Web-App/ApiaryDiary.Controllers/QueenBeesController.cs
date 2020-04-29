@@ -6,6 +6,8 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    using System.Threading.Tasks;
+
     [Authorize]
     public class QueenBeesController : Controller
     {
@@ -18,6 +20,26 @@
         {
             this.queenBeeService = queenBeeService;
             this.beehiveService = beehiveService;
+        }
+
+        public async Task<IActionResult> AllHivesWithQueens()
+        {
+            var viewModel = new AllBeehivesWithQueensListingViewModel();
+            var allBeehivesWithQueens = this.queenBeeService.GetAllBeehivesWithQueens();
+
+            viewModel.BeehivesWithQueens = await allBeehivesWithQueens;
+
+            return this.View(viewModel);
+        }
+
+        public async Task<IActionResult> AllHivesWithoutQueens()
+        {
+            var viewModel = new AllBeehivesWithQueensListingViewModel();
+            var allBeehivesWithQueens = this.queenBeeService.GetAllBeehivesWithoutQueens();
+
+            viewModel.BeehivesWithQueens = await allBeehivesWithQueens;
+
+            return this.View(viewModel);
         }
 
         public IActionResult Create(int id)
@@ -46,14 +68,15 @@
             return this.RedirectToAction("ViewAll", "Beehives");
         }
 
-        public IActionResult AllHivesWithQueens()
+        public IActionResult Delete(int id)
         {
             return this.View();
         }
 
-        public IActionResult AllHivesWithoutQueens()
+        public IActionResult Edit(int id)
         {
             return this.View();
         }
+
     }
 }

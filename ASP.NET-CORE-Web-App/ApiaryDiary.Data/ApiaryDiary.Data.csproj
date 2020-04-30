@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20200403111825_FixBeekeepingTypeInApiary.Designer.cs" />
     <Compile Remove="Migrations\20200410085839_InsertCreatedOnAndDeletedOnFunctionality.cs" />
     <Compile Remove="Migrations\20200410085839_InsertCreatedOnAndDeletedOnFunctionality.Designer.cs" />
+    <Compile Remove="Migrations\20200430025046_MakeSomeInspectionPropertiesRequired.cs" />
+    <Compile Remove="Migrations\20200430025046_MakeSomeInspectionPropertiesRequired.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,6 +3,7 @@
     using ApiaryDiary.Data.Models.Enums;
 
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     public class Inspection
     {
@@ -21,10 +22,12 @@
 
         public DateTime? DeletedOn { get; set; }
 
+        [Required]
         public HiveCondition HiveCondition { get; set; }
 
         public string HygieneLevel { get; set; }
 
+        [Required]
         public int HoneyCombsCount { get; set; }
 
         public double HoneyInKilos { get; set; }

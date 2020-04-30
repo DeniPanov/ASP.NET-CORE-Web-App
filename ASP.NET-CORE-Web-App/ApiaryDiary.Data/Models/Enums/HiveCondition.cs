@@ -2,11 +2,11 @@
 {
     public enum HiveCondition
     {
+        Normal = 0,
         VeryGood = 1,
         Good = 2,
-        Normal = 3,
-        Bad = 4,
-        VeryBad = 5,
+        Bad = 3,
+        VeryBad = 4,
         Other = 9,
     }
 }

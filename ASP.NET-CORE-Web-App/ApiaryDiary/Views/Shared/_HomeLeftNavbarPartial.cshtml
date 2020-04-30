@@ -11,7 +11,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Dashboard</p>
+                @*<p>Dashboard</p>*@
                 <li class="active">
                     <a href="#apiarySubmenu" data-toggle="collapse" aria-expanded="false"
                        class="btn btn-secondary dropdown-toggle text-left">Apiaries</a>
@@ -21,71 +21,80 @@
                                class="dropdown-item-text">Create new apiary</a>
                         </li>
                         <li>
-                            <a asp-controller="Apiaries" asp-action="ViewAll">View all apiaries</a>
+                            <a asp-controller="Apiaries" asp-action="ViewAll" 
+                               class="dropdown-item-text">View all apiaries</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#beehibesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Beehives</a>
+                    <a href="#beehibesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn-secondary">Beehives</a>
                     <ul class="collapse list-unstyled" id="beehibesSubmenu">
                         <li>
-                            <a asp-controller="Beehives" asp-action="Create">Add beehive</a>
+                            <a asp-controller="Beehives" asp-action="Create"
+                               class="dropdown-item-text">Add beehive</a>
                         </li>
                         <li>
-                            <a asp-controller="Beehives"
+                            <a asp-controller="Beehives" class="dropdown-item-text"
                                asp-action="CreateMultiple">Add multiple beehives</a>
                         </li>
                         <li>
-                            <a asp-controller="Beehives" asp-action="ViewAll">View all</a>
+                            <a asp-controller="Beehives" asp-action="ViewAll"
+                               class="dropdown-item-text">View all</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#queenBeeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">QueenBees</a>
+                    <a href="#queenBeeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn-secondary">QueenBees</a>
                     <ul class="collapse list-unstyled" id="queenBeeSubmenu">
                         <li>
-                            <a asp-controller="QueenBees" asp-action="AllHivesWithQueens">View all beehives with Queens</a>
+                            <a asp-controller="QueenBees" asp-action="AllHivesWithQueens"
+                               bg-secondary>View all beehives with Queens</a>
                         </li>
                         <li>
-                            <a  asp-controller="QueenBees" asp-action="AllHivesWithoutQueens">View all beehives without Queens</a>
+                            <a  asp-controller="QueenBees" asp-action="AllHivesWithoutQueens"
+                               bg-secondary>View all beehives without Queens</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#locationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Locations</a>
+                    <a href="#locationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn-secondary">Locations</a>
                     <ul class="collapse list-unstyled" id="locationSubmenu">
                         <li>
-                            <a asp-controller="Locations" asp-action="Create">Add new location</a>
+                            <a asp-controller="Locations" asp-action="Create"
+                               bg-secondary>Add new location</a>
                         </li>
                         <li>
-                            <a asp-controller="Locations" asp-action="ViewAll">View all locations</a>
+                            <a asp-controller="Locations" asp-action="ViewAll"
+                               bg-secondary>View all locations</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#inspectionsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inspections</a>
+                    <a href="#inspectionsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn-secondary">Inspections</a>
                     <ul class="collapse list-unstyled" id="inspectionsSubmenu">
                         <li>
-                            <a asp-controller="Inspections" asp-action="AllHivesWithInspections">View all inspected beehives</a>
+                            <a asp-controller="Inspections" asp-action="AllHivesWithInspections"
+                               bg-secondary>View all inspected beehives</a>
                         </li>
                         <li>
-                            <a asp-controller="Inspections" asp-action="AllHivesWithoutInspections">View all uninspected beehives</a>
+                            <a asp-controller="Inspections" asp-action="AllHivesWithoutInspections"
+                               bg-secondary>View all uninspected beehives</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#statisticsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Statistics</a>
+                    <a href="#statisticsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn-secondary">Statistics</a>
                     <ul class="collapse list-unstyled" id="statisticsSubmenu">
                         <li>
-                            <a href="#">Beehive statistics</a>
+                            <a href="#" bg-secondary>Beehive statistics</a>
                         </li>
                         <li>
-                            <a href="#">Apiary statistics</a>
+                            <a href="#" bg-secondary>Apiary statistics</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Notes</a>
+                    <a href="#" class="btn-secondary">Notes</a>
                 </li>
             </ul>
         </nav>

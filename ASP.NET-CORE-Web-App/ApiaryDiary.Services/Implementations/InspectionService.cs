@@ -63,6 +63,30 @@
             await this.db.SaveChangesAsync();
         }
 
+        public async Task EditAsync(
+            int inspectionId, HiveCondition hiveCondition, string hygieneLevel,
+            int honeyCombsCount, double honeyInKilos, double weight, double temperature)
+        {
+            var inspection = this.FindById(inspectionId);
+
+            if (inspection == null)
+            {
+                return;
+            }
+
+            inspection.Id = inspectionId;
+            // inspection.BeehiveId = beehiveId,
+            inspection.HiveCondition = hiveCondition;
+            inspection.HygieneLevel = hygieneLevel;
+            inspection.HoneyCombsCount = honeyCombsCount;
+            inspection.HoneyInKilos = honeyInKilos;
+            inspection.BeehiveWeight = weight;
+            inspection.Temperature = temperature;
+            inspection.ModifiedOn = DateTime.UtcNow;
+
+            await this.db.SaveChangesAsync();
+        }
+
         public Inspection FindById(int inspectionId)
         {
             return db.Inspections

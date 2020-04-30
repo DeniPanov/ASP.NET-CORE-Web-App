@@ -114,7 +114,5 @@
 
             return this.RedirectToAction(nameof(AllHivesWithQueens));
         }
-
-
     }
 }

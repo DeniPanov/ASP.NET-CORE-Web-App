@@ -1,0 +1,45 @@
+﻿@using ApiaryDiary.Controllers.Models.Inspections
+@model EditInspectionPostModel
+
+    <form asp-controller="Inspections" asp-action="Edit" method="post" class="form">
+        <div class="form-group">
+            <label asp-for="HiveCondition"></label>
+            <select asp-for="HiveCondition" class="form-control col-md-4"
+                    asp-items="@Html.GetEnumSelectList<HiveCondition>()"></select>
+            <span asp-validation-for="HiveCondition" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="HygieneLevel"></label>
+            <input asp-for="HygieneLevel" class="form-control col-md-4" />
+            <span asp-validation-for="HygieneLevel" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="HoneyCombsCount"></label>
+            <input asp-for="HoneyCombsCount" class="form-control col-md-4" />
+            <span asp-validation-for="HoneyCombsCount" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="HoneyInKilos"></label>
+            <input asp-for="HoneyInKilos" class="form-control col-md-4" />
+            <span asp-validation-for="HoneyInKilos" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BeehiveWeight"></label>
+            <input asp-for="BeehiveWeight" class="form-control col-md-4" />
+            <span asp-validation-for="BeehiveWeight" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Temperature"></label>
+            <input asp-for="Temperature" class="form-control col-md-4" />
+            <span asp-validation-for="Temperature" class="text-danger"></span>
+        </div>
+
+        <br />
+
+        <input asp-route-id="@Model.Id" type="submit" value="Edit" class="btn btn-primary" />
+    </form>

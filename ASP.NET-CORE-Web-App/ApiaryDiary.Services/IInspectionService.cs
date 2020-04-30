@@ -15,6 +15,10 @@
 
         Task DeleteAsync(int inspectionId);
 
+        Task EditAsync(
+            int inspectionId, HiveCondition hiveCondition, string hygieneLevel,
+            int honeyCombsCount, double honeyInKilos, double weight, double temperature);
+
         Inspection FindById(int inspectionId);
 
         Task<IEnumerable<InspectedHivesListingServiceModel>> GetAllInspectedHives();

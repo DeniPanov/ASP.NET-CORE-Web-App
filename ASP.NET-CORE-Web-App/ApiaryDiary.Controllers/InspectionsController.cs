@@ -76,5 +76,43 @@
 
             return this.RedirectToAction(nameof(AllHivesWithInspections));
         }
+
+        public IActionResult Edit(int id)
+        {
+            var inspection = this.inspectionService.FindById(id);
+
+            if (inspection == null)
+            {
+                return this.NotFound();
+            }
+
+            var viemModel = new EditInspectionPostModel
+            {
+                Id = inspection.Id,
+                HiveCondition = inspection.HiveCondition,
+                HygieneLevel = inspection.HygieneLevel,
+                HoneyCombsCount = inspection.HoneyCombsCount,
+                HoneyInKilos = inspection.HoneyInKilos,
+                BeehiveWeight = inspection.BeehiveWeight,
+                Temperature = inspection.Temperature
+            };
+
+            return this.View(viemModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditInspectionPostModel input)
+        {
+            if (this.ModelState.IsValid == false)
+            {
+                return this.View(input);
+            }
+
+            await this.inspectionService.EditAsync(
+                id, input.HiveCondition, input.HygieneLevel, input.HoneyCombsCount,
+                input.HoneyInKilos, input.BeehiveWeight, input.Temperature);
+
+            return this.RedirectToAction(nameof(AllHivesWithInspections));
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿namespace ApiaryDiary.Data.Models
 {
+    using ApiaryDiary.Data.Models.Enums;
+
     using System;
 
     public class Inspection
@@ -18,6 +20,10 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public HiveCondition HiveCondition { get; set; }
+
+        public string HygieneLevel { get; set; }
 
         public int HoneyCombsCount { get; set; }
 

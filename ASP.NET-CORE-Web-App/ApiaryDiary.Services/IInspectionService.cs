@@ -13,6 +13,8 @@
             int beehiveId, HiveCondition condition, string hygieneLevel,
             int honeyCombsCount, double honeyInKilos, double beehiveWeight, double temperature);
 
+        Task DeleteAsync(int inspectionId);
+
         Inspection FindById(int inspectionId);
 
         Task<IEnumerable<InspectedHivesListingServiceModel>> GetAllInspectedHives();

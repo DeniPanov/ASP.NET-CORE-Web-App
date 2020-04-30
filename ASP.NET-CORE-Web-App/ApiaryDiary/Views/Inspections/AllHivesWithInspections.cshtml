@@ -25,13 +25,13 @@
                     <td class="text-center">@inspection.HoneyInKilos</td>
 
                     <td class="text-center mx-auto">
-                        @*<a asp-controller="Isnpections" asp-action="Create" asp-route-id="@inspection.BeehiveId">
+                        <a asp-controller="Inspections" asp-action="Create" asp-route-id="@inspection.BeehiveId">
                             <i class="fas fa-plus" data-toggle="tooltip" data-placement="top" title="Add another inspection"></i>
-                        </a>*@
-                        <a asp-controller="Isnpections" asp-action="Edit" asp-route-id="@inspection.Id">
+                        </a>
+                        <a asp-controller="Inspections" asp-action="Edit" asp-route-id="@inspection.Id">
                             <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="top" title="Edit current inspection"></i>
                         </a>
-                        <a asp-controller="Isnpections" asp-action="Delete" asp-route-id="@inspection.Id">
+                        <a asp-controller="Inspections" asp-action="Delete" asp-route-id="@inspection.Id">
                             <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete current inspection"></i>
                         </a>
                     </td>

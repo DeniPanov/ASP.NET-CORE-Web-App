@@ -6,7 +6,7 @@
     using ApiaryDiary.Services.Models.Inspections;
 
     using Microsoft.EntityFrameworkCore;
-
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -48,6 +48,21 @@
             return inspection.Id;
         }
 
+        public async Task DeleteAsync(int inspectionId)
+        {
+            var inspection = this.FindById(inspectionId);
+
+            if (inspection == null)
+            {
+                return;
+            }
+
+            inspection.IsDeleted = true;
+            inspection.DeletedOn = DateTime.UtcNow;
+
+            await this.db.SaveChangesAsync();
+        }
+
         public Inspection FindById(int inspectionId)
         {
             return db.Inspections
@@ -80,7 +95,7 @@
                .Where(b => b.IsDeleted == false && b.IsInspected == false)
                .Select(b => new UninspectedHivesListingServiceModel
                {
-                   //Id = i.Id,
+                   Id = b.Inspections.FirstOrDefault().Id,
                    BeehiveId = b.Id,
                    BeehiveNumber = b.Number,
                    HiveCondition = b.Inspections.FirstOrDefault().HiveCondition,

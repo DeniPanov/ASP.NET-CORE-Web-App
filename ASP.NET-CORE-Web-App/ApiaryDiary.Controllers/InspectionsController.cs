@@ -65,6 +65,16 @@
             return this.RedirectToAction(nameof(AllHivesWithInspections));
         }
 
-        
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (this.ModelState.IsValid == false)
+            {
+                return this.NotFound();
+            }
+
+            await this.inspectionService.DeleteAsync(id);
+
+            return this.RedirectToAction(nameof(AllHivesWithInspections));
+        }
     }
 }

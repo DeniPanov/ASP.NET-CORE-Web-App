@@ -45,6 +45,8 @@
 
         public bool HasQueen { get; set; }
 
+        public bool IsInspected { get; set; }
+
         public string Notes { get; set; }
 
         public virtual Apiary Apiary { get; set; }

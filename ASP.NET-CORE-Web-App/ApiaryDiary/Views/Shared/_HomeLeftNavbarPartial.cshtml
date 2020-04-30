@@ -66,13 +66,10 @@
                     <a href="#inspectionsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Inspections</a>
                     <ul class="collapse list-unstyled" id="inspectionsSubmenu">
                         <li>
-                            <a href="#">Add new inspection</a>
+                            <a asp-controller="Inspections" asp-action="AllHivesWithInspections">View all inspected beehives</a>
                         </li>
                         <li>
-                            <a href="#">View all inspected beehives</a>
-                        </li>
-                        <li>
-                            <a href="#">View all uninspected beehives</a>
+                            <a asp-controller="Inspections" asp-action="AllHivesWithoutInspections">View all uninspected beehives</a>
                         </li>
                     </ul>
                 </li>

@@ -95,22 +95,16 @@
         public async Task<IEnumerable<AllBeehivesWithQueensServiceViewModel>> GetAllBeehivesWithQueens()
         {
             return await this.db
-               .Beehives
-               .Where(b => b.HasQueen == true && b.IsDeleted == false)
-               .Select(b => new AllBeehivesWithQueensServiceViewModel
+               .QueenBees
+               .Where(q => q.Beehive.HasQueen == true && q.IsDeleted == false)
+               .Select(q => new AllBeehivesWithQueensServiceViewModel
                {
-                   Id = b.Id,
-                   ApiaryName = b.Apiary.Name,
-                   BeehiveNumber = b.Number,
-                   QueenId = b.QueenBees
-                            .Select(q => q.Id)
-                            .FirstOrDefault(),
-                   QueenType = b.QueenBees
-                           .Select(q => q.Type)
-                           .FirstOrDefault(),
-                   QueenCreatedOn = b.QueenBees
-                           .Select(q => q.CreatedOn)
-                           .FirstOrDefault(),
+                   Id = q.BeehiveId,
+                   ApiaryName = q.Beehive.Apiary.Name,
+                   BeehiveNumber = q.Beehive.Number,
+                   QueenId = q.Id,
+                   QueenType = q.Type,
+                   QueenCreatedOn = q.CreatedOn,
                })
                .ToListAsync();
         }

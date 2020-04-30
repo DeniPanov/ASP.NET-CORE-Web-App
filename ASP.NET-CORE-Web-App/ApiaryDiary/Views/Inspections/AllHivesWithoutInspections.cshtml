@@ -1,0 +1,30 @@
+﻿@using ApiaryDiary.Controllers.Models.Inspections
+@model InspectionsListingViewModel
+
+<div class="container-fluid">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Beehive Number</th>
+                <th scope="col" class="text-center">Hive Condition</th>
+                <th scope="col" class="text-center">Options</th>
+            </tr>
+        </thead>
+
+        @foreach (var inspection in Model.UnInspectedBeehives)
+        {
+            <tbody>
+                <tr>
+                    <td class="text-center">@inspection.BeehiveNumber</td>
+                    <td class="text-center">@inspection.HiveCondition</td>
+
+                    <td class="text-center mx-auto">
+                        <a asp-controller="Beehives" asp-action="Details" asp-route-id="@inspection.BeehiveId">
+                            <i class="fas fa-clipboard-list" data-toggle="tooltip" data-placement="top" title="Beehive Details"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>

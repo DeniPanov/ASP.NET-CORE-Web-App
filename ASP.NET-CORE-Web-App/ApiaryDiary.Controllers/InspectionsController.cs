@@ -20,14 +20,24 @@
             this.beehiveService = beehiveService;
         }
 
-        public IActionResult AllHivesWithInspections()
+        public async Task<IActionResult> AllHivesWithInspections()
         {
-            return this.View();
+            var viewModel = new InspectionsListingViewModel();
+            var allInspections = await this.inspectionService.GetAllInspectedHives();
+
+            viewModel.InspectedBeehives = allInspections;
+
+            return this.View(viewModel);
         }
 
-        public IActionResult AllHivesWithoutInspections()
+        public async Task<IActionResult> AllHivesWithoutInspections()
         {
-            return this.View();
+            var viewModel = new InspectionsListingViewModel();
+            var allInspections = await this.inspectionService.GetAllUninspectedHives();
+
+            viewModel.UnInspectedBeehives = allInspections;
+
+            return this.View(viewModel);
         }
 
         public IActionResult Create(int id)

@@ -16,8 +16,4 @@
     <ProjectReference Include="..\ApiaryDiary.Data\ApiaryDiary.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Inspections\" />
-  </ItemGroup>
-
 </Project>

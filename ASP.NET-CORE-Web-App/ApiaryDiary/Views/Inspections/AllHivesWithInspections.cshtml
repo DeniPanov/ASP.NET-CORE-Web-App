@@ -1,0 +1,42 @@
+﻿@using ApiaryDiary.Controllers.Models.Inspections
+@model InspectionsListingViewModel
+
+<div class="container-fluid">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Beehive Number</th>
+                <th scope="col" class="text-center">Hive Condition</th>
+                <th scope="col" class="text-center">Hygiene level</th>
+                <th scope="col" class="text-center">Honey Combs Count</th>
+                <th scope="col" class="text-center">Honey in Kilos</th>
+                <th scope="col" class="text-center">Options</th>
+            </tr>
+        </thead>
+
+        @foreach (var inspection in Model.InspectedBeehives)
+        {
+            <tbody>            
+                <tr>
+                    <td class="text-center">@inspection.BeehiveNumber</td>
+                    <td class="text-center">@inspection.HiveCondition</td>
+                    <td class="text-center">@inspection.HygieneLevel</td>
+                    <td class="text-center">@inspection.HoneyCombsCount</td>
+                    <td class="text-center">@inspection.HoneyInKilos</td>
+
+                    <td class="text-center mx-auto">
+                        @*<a asp-controller="Isnpections" asp-action="Create" asp-route-id="@inspection.BeehiveId">
+                            <i class="fas fa-plus" data-toggle="tooltip" data-placement="top" title="Add another inspection"></i>
+                        </a>*@
+                        <a asp-controller="Isnpections" asp-action="Edit" asp-route-id="@inspection.Id">
+                            <i class="fas fa-pencil-alt" data-toggle="tooltip" data-placement="top" title="Edit current inspection"></i>
+                        </a>
+                        <a asp-controller="Isnpections" asp-action="Delete" asp-route-id="@inspection.Id">
+                            <i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete current inspection"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>

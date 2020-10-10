@@ -75,7 +75,6 @@
             return this.View(apiary);
         }
 
-
         public async Task<IActionResult> Edit(int id)
         {
             var apiaryDetails = await this.apiaryService.DetailsAsync(id);

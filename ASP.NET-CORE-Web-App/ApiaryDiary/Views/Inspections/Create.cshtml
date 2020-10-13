@@ -1,6 +1,7 @@
 ﻿@using ApiaryDiary.Controllers.Models.Inspections
 @model AddInspectionPostModel
 
+<div class="container-fluid">
     <form asp-controller="Inspections" asp-action="Create" method="post" class="form">
         <div class="form-group">
             <label asp-for="CreatedOn"></label>
@@ -49,3 +50,4 @@
 
         <input asp-route-id="@Model.BeehiveId" type="submit" value="Create" class="btn btn-primary" />
     </form>
+</div>

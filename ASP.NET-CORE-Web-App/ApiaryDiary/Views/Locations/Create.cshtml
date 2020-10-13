@@ -1,6 +1,7 @@
 ﻿@using ApiaryDiary.Controllers.Models.Locations
 @model AddLocationPostModel
 
+<div class="container-fluid">
     <form asp-action="Create" method="post" class="form">
         @*Dropdown from db*@
         <div class="form-group">
@@ -42,3 +43,4 @@
 
         <input asp-route-id="@Model.Id" type="submit" value="Create" class="btn btn-primary" />
     </form>
+</div>

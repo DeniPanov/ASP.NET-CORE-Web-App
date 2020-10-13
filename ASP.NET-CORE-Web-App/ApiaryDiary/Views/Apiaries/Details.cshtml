@@ -35,6 +35,7 @@
                 <p class="card-text"><span class="text-dark">Capacity:</span> @Model.Capacity</p>
                 <p class="card-text"><span class="text-dark">Total Beehives:</span> @Model.BeehivesCount</p>
                 <a asp-controller="Apiaries" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+                <a asp-controller="Apiaries" asp-action="ViewAll" type="submit" class="btn btn-info ml-2">Back</a>
             </div>
         </div>
     </div>

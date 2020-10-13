@@ -1,6 +1,7 @@
 ﻿@using ApiaryDiary.Controllers.Models.Apiaries
 @model CreateApiaryPostModel
 
+<div class="container-fluid">
     <form asp-action="Create" method="post" class="form">
         <div class="form-group">
             <label asp-for="Name"></label>
@@ -31,3 +32,4 @@
 
         <input type="submit" value="Create" class="btn btn-primary" />
     </form>
+</div>

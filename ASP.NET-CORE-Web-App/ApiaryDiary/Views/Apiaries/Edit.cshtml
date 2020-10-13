@@ -1,6 +1,7 @@
 ﻿@using ApiaryDiary.Controllers.Models.Apiaries
 @model EditApiaryPostModel
 
+<div class="container-fluid">
     <form asp-controller="Apiaries" asp-action="Edit" method="post" class="form">
         <div class="form-group">
             <label asp-for="Name"></label>
@@ -32,3 +33,4 @@
         <input asp-route-id="@Model.Id" type="submit" value="Edit" class="btn btn-warning" />
         <input asp-action="ViewAll" type="submit" value="Back" class="btn btn-info ml-2" />
     </form>
+</div>

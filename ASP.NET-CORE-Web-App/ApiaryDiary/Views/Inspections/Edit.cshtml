@@ -1,6 +1,7 @@
 ﻿@using ApiaryDiary.Controllers.Models.Inspections
 @model EditInspectionPostModel
 
+<div class="container-fluid">
     <form asp-controller="Inspections" asp-action="Edit" method="post" class="form">
         <div class="form-group">
             <label asp-for="HiveCondition"></label>
@@ -43,3 +44,4 @@
 
         <input asp-route-id="@Model.Id" type="submit" value="Edit" class="btn btn-primary" />
     </form>
+</div>

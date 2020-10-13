@@ -1,6 +1,7 @@
 ﻿@using ApiaryDiary.Controllers.Models.Beehives
 @model AddBeehivesInRangePostModel
 
+<div class="container-fluid">
     <form asp-action="Create" method="post" class="form">
         <div class="form-group">
             <label asp-for="FirstNumber"></label>
@@ -40,3 +41,4 @@
 
         <input asp-route-id="@Model.SelectedApiary" type="submit" value="Create" class="btn btn-primary" />
     </form>
+</div>

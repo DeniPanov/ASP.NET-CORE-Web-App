@@ -1,6 +1,7 @@
 ﻿@using ApiaryDiary.Controllers.Models.QueenBees
 @model EditQueenBeePostModel
 
+<div class="container-fluid">
     <form asp-controller="QueenBees" asp-action="Edit" method="post" class="form">
         <div class="form-group">
             <label asp-for="QueenType"></label>
@@ -33,3 +34,4 @@
         <input asp-route-id="@Model.Id" type="submit" value="Edit" class="btn btn-warning" />
         <input asp-controller="QueenBees" asp-action="AllHivesWithQueens" type="submit" value="Back" class="btn btn-info ml-2" />
     </form>
+</div>

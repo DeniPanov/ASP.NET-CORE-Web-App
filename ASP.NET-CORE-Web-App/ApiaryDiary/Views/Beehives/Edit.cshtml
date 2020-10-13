@@ -1,6 +1,7 @@
 ﻿@using ApiaryDiary.Controllers.Models.Beehives
 @model EditBeehivePostModel
 
+<div class="container-fluid">
     <form asp-controller="Beehives" asp-action="Edit" method="post" class="form">
         <div class="form-group">
             <label asp-for="Number"></label>
@@ -27,3 +28,4 @@
         <input asp-route-id="@Model.Id" type="submit" value="Edit" class="btn btn-warning" />
         <input asp-action="ViewAll" type="submit" value="Back" class="btn btn-info ml-2" />
     </form>
+</div>
